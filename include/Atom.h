@@ -8,12 +8,12 @@ class Atom
 {
     public:
         /** Default constructor */
-        Atom();
+        Atom(AtomType);
         /** Default destructor */
         virtual ~Atom();
 
         AtomType getPayload() { return payload; };
-        std::string toString() { return std::to_string(payload);}
+        std::string toString();
 
     protected:
         AtomType payload;
