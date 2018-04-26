@@ -14,11 +14,8 @@ class Atom
 
         AtomType getPayload() { return payload; };
         std::string toString();
-
     protected:
         AtomType payload;
-
-    private:
 };
 
 #endif // ATOM_H
