@@ -4,7 +4,7 @@
 using namespace std;
 
 int main(){
-    Atom<int> iAtom(10);
+    Atom<string> iAtom("hello!");
     cout << iAtom.toString() << endl;
 
     return 0;
