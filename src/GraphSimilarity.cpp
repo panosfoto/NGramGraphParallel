@@ -1,5 +1,7 @@
+/**
+ * \file GraphSimilarity.cpp
+ */
 #include "GraphSimilarity.h"
-
 
 /** \brief
  *      Default constructor. Sets all similarity values to 0

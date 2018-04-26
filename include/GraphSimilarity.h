@@ -1,3 +1,6 @@
+/**
+ * \file GraphSimilarity.h
+ */
 #ifndef GRAPHSIMILARITY_H
 #define GRAPHSIMILARITY_H
 
@@ -18,8 +21,19 @@ class GraphSimilarity : public Similarity
         double getOverallSimilarity();
 
     protected:
+        /** \var valueSimilarity
+         * Similarity regarding the existence and weight of edges of the graphs
+         */
         double valueSimilarity;
+
+        /** \var containmentSimilarity
+         * Similarity regarding the existence of edges of the graphs
+         */
         double containmentSimilarity;
+
+        /** \var sizeSimilarity
+         * Similarity regarding the number of edges of the graphs
+         */
         double sizeSimilarity;
 };
 

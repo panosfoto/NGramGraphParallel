@@ -1,3 +1,6 @@
+/**
+ * \file main.cpp
+ */
 #include <iostream>
 #include "Atom.h"
 #include "GraphSimilarity.h"
