@@ -6,6 +6,7 @@
 
 #include <string>
 
+
 /**
  * \Class Atom A class that represents an atom, the smallest entity of a DivisibleObject.
  *
@@ -34,5 +35,7 @@ class Atom
          */
         AtomType payload;
 };
+
+#include "Atom.tcc"
 
 #endif // ATOM_H

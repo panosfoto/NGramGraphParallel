@@ -1,7 +1,6 @@
 /**
  * \file Atom.cpp
  */
-#include "Atom.h"
 #include <sstream>
 
 /**
