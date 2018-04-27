@@ -13,6 +13,11 @@
 class GraphSimilarity : public Similarity
 {
     public:
+        /**
+         * This is a brief 1st test.
+         * 
+         * And this is the start of the longer version.
+         */
         GraphSimilarity();
         GraphSimilarity(double, double, double);
 

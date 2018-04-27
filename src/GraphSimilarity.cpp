@@ -3,8 +3,13 @@
  */
 #include "GraphSimilarity.h"
 
-/** \brief
+/**
  *      Default constructor. Sets all similarity values to 0
+ * 
+ * An example code to use this class is as follows:
+ * @code
+ * GraphSimilarity gs = new GraphSimilarity::GraphSimilarity();
+ * @endcode
  */
 GraphSimilarity::GraphSimilarity()
 {
@@ -16,9 +21,9 @@ GraphSimilarity::GraphSimilarity()
 
 /** \brief
  *      A constructor that initializes the similarity values with the according provided parameters
- * \param valueSimilarity double
- * \param containmentSimilarity double
- * \param sizeSimilarity double
+ * \param valueSimilarity (double) The valueSimilarity component value.
+ * \param containmentSimilarity (double) The containmentSimilarity component value.
+ * \param sizeSimilarity (double) The sizeSimilarity component value.
  *
  */
 GraphSimilarity::GraphSimilarity(double valueSimilarity, double containmentSimilarity, double sizeSimilarity)
@@ -30,17 +35,19 @@ GraphSimilarity::GraphSimilarity(double valueSimilarity, double containmentSimil
 
 
 /** \brief
- *      A function that returns  a convenient way to see the similarities defined in this subclass and their values,
- *      in the form of pairs <SimilarityName, SimilarityValue>
+ *      A function that returns a map of the similarity constituents, as pairs of the form <SimilarityName, SimilarityValue>.
  * \return map<string, double>
- *      Returns  a map with the values of the similarities
+ *      A map with the values of the similarities
  */
 map<string, double> GraphSimilarity::getSimilarityComponents()
 {
+    // Init result map
     map<string, double> resultMap;
+    // Update components
     resultMap["valueSimilarity"] = this->valueSimilarity;
     resultMap["containmentSimilarity"] = this->containmentSimilarity;
     resultMap["sizeSimilarity"] = this->sizeSimilarity;
+    // Return
     return resultMap;
 }
 
@@ -48,6 +55,7 @@ map<string, double> GraphSimilarity::getSimilarityComponents()
 /** \brief
  *      Returns the overall similarity defined as:
  *      valueSimilarity * containmentSimilarity * sizeSimilarity
+ * 
  * \return double
  *      Returns the overall similarity
  */
