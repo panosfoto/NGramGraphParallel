@@ -9,21 +9,28 @@ DivisibleObject::DivisibleObject(DivisibleObject object)
 }
 
 template <class DivisibleObjectType>
-DivisibleObject::~DivisibleObject()
-{
-    //dtor
-}
-
-template <class DivisibleObjectType>
-DivisibleObject::DivisibleObject(const DivisibleObject& other)
+DivisibleObject::DivisibleObject(const DivisibleObject& sourceDivisibleObject)
 {
     //copy ctor
 }
 
+template <class DivisibleObjectType>
+DivisibleObject::~DivisibleObject()
+{
+    //dtor
+}
+/*
 template <class DivisibleObjectType>
 DivisibleObject& DivisibleObject::operator=(const DivisibleObject& rhs)
 {
     if (this == &rhs) return *this; // handle self assignment
     //assignment operator
     return *this;
+}
+*/
+template <class DivisibleObjectType>
+DivisibleObject::operator==(const DivisibleObject& rhDivisibleObject)
+{
+    //TODO not implemented
+    return true;
 }

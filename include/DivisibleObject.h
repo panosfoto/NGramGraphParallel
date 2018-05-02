@@ -5,10 +5,11 @@
 #ifndef DIVISIBLEOBJECT_H
 #define DIVISIBLEOBJECT_H
 
+#include <vector>
 
 /**
- * \Class DivisibleObject A class that represents an object that can be split into Atoms
- *
+ * \Class A class that represents an object that can be split into Atoms.
+ * Divisible objects are the entity that a N-gram graph holds. The graph splits the DivisibleObject to atoms, and creates a node for every atom created.
  */
 template <class DivisibleObjectType>
 class DivisibleObject
@@ -22,26 +23,44 @@ class DivisibleObject
         DivisibleObject(DivisibleObjectType object);
 
         /**
+         * Copy constructor for DivisibleObject class.
+         * \param sourceDivisibleObject The original DivisibleObject instance whose attributes will be copied to the newly created one.
+         *
+         */
+        DivisibleObject(const DivisibleObject& sourceDivisibleObject);
+
+        /**
          * Destructor for DivisibleObject class.
          *
          */
         virtual ~DivisibleObject();
-
-        /**
-         * Copy constructor for DivisibleObject class.
-         * \param other The original DivisibleObject which will be copied.
-         *
-         */
-        DivisibleObject(const DivisibleObject& other);
-
+/*
         /**
          * Assignment operator for DivisibleObject class.
          * \param other The DivisibleObject which will be copied.
          *
          */
         DivisibleObject& operator=(const DivisibleObject& other);
+*/
+        /**
+         * Compares the DivisibleObject with another DivisibleObject instance using the usual '==' operator
+         * \param rhDivisibleObject A reference to a DivisibleObject instance to be compared with.
+         * \return A boolean value: True if the two DivisibleObjects are identical, otherwise False
+         *
+         */
+        bool operator==(const DivisibleObject& rhDivisibleObject);
 
+        //TODO splitAtoms() implement as a separate function or internally (e.g. in constructor)?
     protected:
+        /** \var payload
+         * Payload is the original object that the DivisibleObject instance holds, that can be split into Atoms
+         */
+        DivisibleObjectType payload;
+
+        /** \var atoms
+         * A vector that holds the smallest pieces (atoms) of payload after it has been split.
+         */
+        vector<Atom> atoms;
 };
 
 #include "DivisibleObject.tcc"
