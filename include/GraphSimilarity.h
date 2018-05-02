@@ -14,15 +14,33 @@ class GraphSimilarity : public Similarity
 {
     public:
         /**
-         * This is a brief 1st test.
-         * 
-         * And this is the start of the longer version.
+         *      Default constructor. Sets all similarity values to 0
          */
         GraphSimilarity();
+
+        /** \brief
+         *      A constructor that initializes the similarity values with the according provided parameters
+         * \param valueSimilarity (double) The valueSimilarity component value.
+         * \param containmentSimilarity (double) The containmentSimilarity component value.
+         * \param sizeSimilarity (double) The sizeSimilarity component value.
+         *
+         */
         GraphSimilarity(double, double, double);
 
+        /** \brief
+         *      A function that returns a map of the similarity constituents, as pairs of the form <SimilarityName, SimilarityValue>.
+         * \return map<string, double>
+         *      A map with the values of the similarities
+         */
         map<string, double> getSimilarityComponents();
 
+        /** \brief
+         *      Returns the overall similarity defined as:
+         *      valueSimilarity * containmentSimilarity * sizeSimilarity
+         *
+         * \return double
+         *      Returns the overall similarity
+         */
         double getOverallSimilarity();
 
     protected:

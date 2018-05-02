@@ -17,9 +17,13 @@ template <class AtomType>
 class Atom
 {
     public:
-        /** Default constructor */
+        /**
+         * Constructor for Atom class.
+         * \param initialValue The data that the Atom will hold
+         *
+         */
         Atom(AtomType);
-        /** Default destructor */
+        /** Default destructor for Atom class */
         virtual ~Atom();
 
         /**
@@ -28,6 +32,10 @@ class Atom
          */
         AtomType getPayload() { return payload; };
 
+        /**
+         * Provide a readable representation (string) of the data that the Atom holds
+         * \return Returns a string made by the payload
+         */
         std::string toString();
     protected:
         /** \var payload
