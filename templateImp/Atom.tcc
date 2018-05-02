@@ -1,6 +1,7 @@
 /**
- * \file Atom.cpp
+ * \file Atom.tcc
  */
+
 #include <sstream>
 
 template <class AtomType>

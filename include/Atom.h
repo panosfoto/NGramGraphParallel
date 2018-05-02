@@ -1,6 +1,7 @@
 /**
  * \file Atom.h
  */
+
 #ifndef ATOM_H
 #define ATOM_H
 
@@ -22,7 +23,7 @@ class Atom
          * \param initialValue The data that the Atom will hold
          *
          */
-        Atom(AtomType);
+        Atom(AtomType initialValue);
         /** Default destructor for Atom class */
         virtual ~Atom();
 

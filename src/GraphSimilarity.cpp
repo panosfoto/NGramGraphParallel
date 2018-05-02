@@ -1,6 +1,7 @@
 /**
  * \file GraphSimilarity.cpp
  */
+
 #include "GraphSimilarity.h"
 
 GraphSimilarity::GraphSimilarity()

@@ -1,6 +1,7 @@
 /**
  * \file Similarity.h
  */
+
 #ifndef SIMILARITY_H
 #define SIMILARITY_H
 

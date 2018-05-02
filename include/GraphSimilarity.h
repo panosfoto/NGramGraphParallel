@@ -1,6 +1,7 @@
 /**
  * \file GraphSimilarity.h
  */
+
 #ifndef GRAPHSIMILARITY_H
 #define GRAPHSIMILARITY_H
 
