@@ -9,7 +9,7 @@
 
 
 /**
- * \Class Atom A class that represents an atom, the smallest entity of a DivisibleObject.
+ * \Class A class that represents an atom, the smallest entity of a DivisibleObject.
  *
  * Templates are used, so that it may contain whichever type of data is chosen each time.
  * \note When adding new classes, make sure to add/update corresponding template specialization
@@ -38,6 +38,14 @@ class Atom
          * \return Returns a string made by the payload
          */
         std::string toString();
+
+        /**
+         * Compares the Atom with another Atom instance
+         * \param other A reference to an Atom instance to be compared with
+         * \return A boolean value: True if the two Atoms are identical, otherwise False
+         *
+         */
+        bool operator==(const Atom& other);
     protected:
         /** \var payload
          * Payload is the data that the Atom holds

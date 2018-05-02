@@ -23,3 +23,9 @@ std::string Atom<AtomType>::toString()
     ss << payload;
     return ss.str();
 }
+
+template <class AtomType>
+bool Atom<AtomType>::operator==(const Atom& other)
+{
+    return this->payload == other.payload;
+}
