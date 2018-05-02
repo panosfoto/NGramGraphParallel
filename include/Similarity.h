@@ -8,7 +8,7 @@
 using namespace std;
 
 /**
- * \Class A class that represents a generic similarity interface. Such a similarity is considered to be composed of basic similarities (at least one)
+ * \Class An abstract class that represents a generic similarity interface. Such a similarity is considered to be composed of basic similarities (at least one)
  * which, through an appropriate calculation, determine the final, overall similarity.
  */
 class Similarity
