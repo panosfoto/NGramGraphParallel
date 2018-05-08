@@ -15,6 +15,7 @@ int main(){
     cout << iAtom.getPayload() << endl << endl;
 
     DivisibleObject<string> sDO("Hello");
+    sDO.splitPayloadToAtoms(3);
     cout << sDO.toString() << endl;
     cout << sDO.getPayload() << endl;
     cout << "Number of atoms: " << sDO.getAtoms().size() << endl;
@@ -24,6 +25,7 @@ int main(){
         cout << *it << endl;
     }
     cout << endl;
+    DivisibleObject<int> iDO(5);
 
     GraphSimilarity gs(0.1, 0.4, 0.2);
     cout << "Overall Similarity: " << gs.getOverallSimilarity() << endl;

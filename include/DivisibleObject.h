@@ -82,9 +82,9 @@ class DivisibleObject
 
 
         /**
-         * Splits the DivisibleObject's payload to Atoms, filling the atoms vector
-         * \param AtomSize The size of each Atom
-         * \note Must be overwritten class-based to do the splitting according to the class used
+         * Splits the DivisibleObject's payload to Atoms with AtomSize size, filling the atoms vector
+         * \param AtomSize The size of each Atom.
+         * \note Must be class-based overwritten (template specialization) to do the splitting according to the class used.
          */
         void splitPayloadToAtoms(unsigned int AtomSize);
 

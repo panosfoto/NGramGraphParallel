@@ -9,7 +9,6 @@ template <class DivisibleObjectType>
 DivisibleObject<DivisibleObjectType>::DivisibleObject(DivisibleObjectType object)
 {
     this->payload = object;
-    splitPayloadToAtoms();
 }
 
 template <class DivisibleObjectType>
@@ -42,7 +41,7 @@ bool DivisibleObject<DivisibleObjectType>::operator==(const DivisibleObject& rhD
 }
 
 template <class DivisibleObjectType>
-void DivisibleObject<DivisibleObjectType>::splitPayloadToAtoms()
+void DivisibleObject<DivisibleObjectType>::splitPayloadToAtoms(unsigned int AtomSize)
 {
     // This function should always be specialized, so the generic function throws an error
     cerr << "Error: splitPayloadToAtoms() not specialized for this class/type." << endl;
@@ -51,15 +50,23 @@ void DivisibleObject<DivisibleObjectType>::splitPayloadToAtoms()
 
 // template specialization for string payload/atoms
 template <>
-void DivisibleObject<string>::splitPayloadToAtoms()
+void DivisibleObject<string>::splitPayloadToAtoms(unsigned int AtomSize)
 {
+    if (AtomSize > payload.length())
+    {
+        cerr << "splitPayloadToAtoms(): Error: atom size provided is greater than the length of the payload. Payload could not be split." << endl;
+        return;
+    }
     string tempString;
     Atom<string> *tempAtom;
     //test implementation
-    for(unsigned int i = 0 ; i < payload.length() ; ++i)
+    for(unsigned int i = 0 ; i < payload.length()-AtomSize+1 ; ++i)
     {
         tempString.clear();
-        tempString.push_back(payload[i]);
+        for(unsigned int j = 0 ; j < AtomSize ; ++j)
+        {
+            tempString.push_back(payload[i+j]);
+        }
         tempString.push_back('\0');
         tempAtom = new Atom<string>(tempString);
         atoms.push_back(*tempAtom);
