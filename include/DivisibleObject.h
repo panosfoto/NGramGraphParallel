@@ -66,6 +66,21 @@ class DivisibleObject
          */
         vector<Atom<DivisibleObjectType>> getAtoms(){ return atoms; }
 
+
+        /**
+         * Provide a readable representation (string) of the data that the DivisibleObject holds
+         * \return Returns a string made by the payload
+         */
+        std::string toString();
+
+
+        /**
+         * Provide a readable representation (string) of the data that the DivisibleObject's Atoms hold
+         * \return Returns a vector with strings made by the string representation of each Atom
+         */
+        vector<std::string> atomsToString();
+
+
     protected:
         /** \var payload
          * Payload is the original object that the DivisibleObject instance holds, that can be split into Atoms
