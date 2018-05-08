@@ -45,7 +45,7 @@ template <class DivisibleObjectType>
 void DivisibleObject<DivisibleObjectType>::splitPayloadToAtoms()
 {
     // This function should always be specialized, so the generic function throws an error
-    cerr << "Error: splitPayloadToAtoms() not specialized for this class." << endl;
+    cerr << "Error: splitPayloadToAtoms() not specialized for this class/type." << endl;
     //exit(-1);
 }
 
