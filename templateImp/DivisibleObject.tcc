@@ -46,7 +46,24 @@ void DivisibleObject<DivisibleObjectType>::splitPayloadToAtoms()
 {
     // This function should always be specialized, so the generic function throws an error
     cerr << "Error: splitPayloadToAtoms() not specialized for this class." << endl;
-    exit(-1);
+    //exit(-1);
+}
+
+// template specialization for string payload/atoms
+template <>
+void DivisibleObject<string>::splitPayloadToAtoms()
+{
+    string tempString;
+    Atom<string> *tempAtom;
+    //test implementation
+    for(unsigned int i = 0 ; i < payload.length() ; ++i)
+    {
+        tempString.clear();
+        tempString.push_back(payload[i]);
+        tempString.push_back('\0');
+        tempAtom = new Atom<string>(tempString);
+        atoms.push_back(*tempAtom);
+    }
 }
 
 template <class DivisibleObjectType>
