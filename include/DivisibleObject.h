@@ -81,6 +81,14 @@ class DivisibleObject
         vector<std::string> atomsToString();
 
 
+        /**
+         * Splits the DivisibleObject's payload to Atoms, filling the atoms vector
+         * \param AtomSize The size of each Atom
+         * \note Must be overwritten class-based to do the splitting according to the class used
+         */
+        void splitPayloadToAtoms(unsigned int AtomSize);
+
+
     protected:
         /** \var payload
          * Payload is the original object that the DivisibleObject instance holds, that can be split into Atoms
@@ -93,14 +101,6 @@ class DivisibleObject
          * A vector that holds the smallest pieces (atoms) of payload after it has been split.
          */
         vector<Atom<DivisibleObjectType>> atoms;
-
-
-        //TODO implement splitPayloadToAtoms() as a public or protected function?
-        /**
-         * Splits the DivisibleObject's payload to Atoms, filling the atoms vector
-         * \note Must be overwritten class-based to do the splitting according to the class used
-         */
-        void splitPayloadToAtoms();
 };
 
 #include "DivisibleObject.tcc"
