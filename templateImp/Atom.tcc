@@ -29,3 +29,9 @@ bool Atom<AtomType>::operator==(const Atom& other)
 {
     return this->payload == other.payload;
 }
+
+template <>
+bool Atom<std::string>::operator==(const Atom& other)
+{
+    return this->payload.compare(other.payload) == 0;
+}
