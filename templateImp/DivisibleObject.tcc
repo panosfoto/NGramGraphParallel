@@ -3,21 +3,21 @@
  */
 
 template <class DivisibleObjectType>
-DivisibleObject::DivisibleObject(DivisibleObjectType object)
+DivisibleObject<DivisibleObjectType>::DivisibleObject(DivisibleObjectType object)
 {
     this->payload = object;
     splitPayloadToAtoms();
 }
 
 template <class DivisibleObjectType>
-DivisibleObject::DivisibleObject(const DivisibleObject& sourceDivisibleObject)
+DivisibleObject<DivisibleObjectType>::DivisibleObject(const DivisibleObject& sourceDivisibleObject)
 {
     //copy ctor
     //TODO: not implemented
 }
 
 template <class DivisibleObjectType>
-DivisibleObject::~DivisibleObject()
+DivisibleObject<DivisibleObjectType>::~DivisibleObject()
 {
     //dtor
     //TODO: not implemented
@@ -32,14 +32,14 @@ DivisibleObject& DivisibleObject::operator=(const DivisibleObject& rhs)
 }
 */
 template <class DivisibleObjectType>
-DivisibleObject::operator==(const DivisibleObject& rhDivisibleObject)
+bool DivisibleObject<DivisibleObjectType>::operator==(const DivisibleObject& rhDivisibleObject)
 {
     //TODO: not implemented
     return true;
 }
 
 template <class DivisibleObjectType>
-void DivisibleObject::splitPayloadToAtoms()
+void DivisibleObject<DivisibleObjectType>::splitPayloadToAtoms()
 {
     //TODO: not implemented
 }

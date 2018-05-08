@@ -22,6 +22,7 @@ class DivisibleObject
          */
         DivisibleObject(DivisibleObjectType object);
 
+
         /**
          * Copy constructor for DivisibleObject class.
          * \param sourceDivisibleObject The original DivisibleObject instance whose attributes will be copied to the newly created one.
@@ -29,19 +30,22 @@ class DivisibleObject
          */
         DivisibleObject(const DivisibleObject& sourceDivisibleObject);
 
+
         /**
          * Destructor for DivisibleObject class.
          *
          */
         virtual ~DivisibleObject();
-/*
+
+
         /**
          * Assignment operator for DivisibleObject class.
          * \param other The DivisibleObject which will be copied.
          *
          */
-        DivisibleObject& operator=(const DivisibleObject& other);
-*/
+        //DivisibleObject& operator=(const DivisibleObject& other);
+
+
         /**
          * Compares the DivisibleObject with another DivisibleObject instance using the usual '==' operator
          * \param rhDivisibleObject A reference to a DivisibleObject instance to be compared with.
@@ -50,15 +54,17 @@ class DivisibleObject
          */
         bool operator==(const DivisibleObject& rhDivisibleObject);
 
+
         /** \brief Accessor for payload variable
          * \return The DivisibleObject's payload
          */
         DivisibleObjectType getPayload(){ return payload; }
 
+
         /** \brief Accessor for atoms variable
          * \return The DivisibleObject's atoms vector
          */
-        vector<Atom> getAtoms(){ return atoms; }
+        vector<Atom<DivisibleObjectType>> getAtoms(){ return atoms; }
 
     protected:
         /** \var payload
@@ -66,10 +72,13 @@ class DivisibleObject
          */
         DivisibleObjectType payload;
 
+
+        //CAUTION!! --> Is DivisibleObjectType correct type to use?
         /** \var atoms
          * A vector that holds the smallest pieces (atoms) of payload after it has been split.
          */
-        vector<Atom> atoms;
+        vector<Atom<DivisibleObjectType>> atoms;
+
 
         //TODO implement splitPayloadToAtoms() as a public or protected function?
         /**
