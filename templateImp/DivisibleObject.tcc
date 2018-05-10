@@ -7,7 +7,7 @@ using namespace std;
 
 
 
-template <class DivisibleObjectType>
+template <typename DivisibleObjectType>
 DivisibleObject<DivisibleObjectType>::DivisibleObject(DivisibleObjectType object)
 {
     this->payload = object;
@@ -15,7 +15,7 @@ DivisibleObject<DivisibleObjectType>::DivisibleObject(DivisibleObjectType object
 
 
 
-template <class DivisibleObjectType>
+template <typename DivisibleObjectType>
 DivisibleObject<DivisibleObjectType>::DivisibleObject(const DivisibleObject& sourceDivisibleObject)
 {
     //copy ctor
@@ -24,7 +24,7 @@ DivisibleObject<DivisibleObjectType>::DivisibleObject(const DivisibleObject& sou
 
 
 
-template <class DivisibleObjectType>
+template <typename DivisibleObjectType>
 DivisibleObject<DivisibleObjectType>::~DivisibleObject()
 {
     //dtor
@@ -43,7 +43,7 @@ DivisibleObject& DivisibleObject::operator=(const DivisibleObject& rhs)
 */
 
 
-template <class DivisibleObjectType>
+template <typename DivisibleObjectType>
 bool DivisibleObject<DivisibleObjectType>::operator==(const DivisibleObject& rhDivisibleObject)
 {
     //TODO: not implemented
@@ -53,7 +53,7 @@ bool DivisibleObject<DivisibleObjectType>::operator==(const DivisibleObject& rhD
 
 
 
-template <class DivisibleObjectType>
+template <typename DivisibleObjectType>
 void DivisibleObject<DivisibleObjectType>::splitPayloadToAtoms(unsigned int AtomSize)
 {
     // This function should always be specialized, so the generic function throws an error
@@ -90,7 +90,7 @@ void DivisibleObject<string>::splitPayloadToAtoms(unsigned int AtomSize)
 
 
 
-template <class DivisibleObjectType>
+template <typename DivisibleObjectType>
 string DivisibleObject<DivisibleObjectType>::toString()
 {
     ostringstream ss;
@@ -100,7 +100,7 @@ string DivisibleObject<DivisibleObjectType>::toString()
 
 
 
-template <class DivisibleObjectType>
+template <typename DivisibleObjectType>
 vector<string> DivisibleObject<DivisibleObjectType>::atomsToString()
 {
     vector<string> returnVector;

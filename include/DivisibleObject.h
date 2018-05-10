@@ -13,7 +13,7 @@
  * \Class A class that represents an object that can be split into Atoms.
  * Divisible objects are the entity that a N-gram graph holds. The graph splits the DivisibleObject to atoms, and creates a node for every atom created.
  */
-template <class DivisibleObjectType>
+template <typename DivisibleObjectType>
 class DivisibleObject
 {
     public:
@@ -95,7 +95,7 @@ class DivisibleObject
         /**
          * Splits the DivisibleObject's payload to Atoms with AtomSize size, filling the atoms vector
          * \param AtomSize The size of each Atom.
-         * \note Must be class-based overwritten (template specialization) to do the splitting according to the class used.
+         * \note Must be type-based overwritten (template specialization) to do the splitting according to the type used.
          */
         void splitPayloadToAtoms(unsigned int AtomSize);
 

@@ -14,7 +14,7 @@
  * Templates are used, so that it may contain whichever type of data is chosen each time.
  * \note When adding new classes, make sure to add/update corresponding template specialization
  */
-template <class AtomType>
+template <typename AtomType>
 class Atom
 {
     public:
@@ -48,7 +48,7 @@ class Atom
          * Compares the Atom with another Atom instance
          * \param other A reference to an Atom instance to be compared with
          * \return A boolean value: True if the two Atoms are identical, otherwise False
-         * \note Should be class-based overwritten (template specialization) to compare correctly depending on class used.
+         * \note Should be type-based overwritten (template specialization) to compare correctly depending on type used.
          */
         bool operator==(const Atom& other);
 

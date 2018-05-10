@@ -5,7 +5,7 @@
 #include <sstream>
 
 
-template <class AtomType>
+template <typename AtomType>
 Atom<AtomType>::Atom(AtomType initialValue)
 {
     payload = initialValue;
@@ -13,7 +13,7 @@ Atom<AtomType>::Atom(AtomType initialValue)
 
 
 
-template <class AtomType>
+template <typename AtomType>
 Atom<AtomType>::~Atom()
 {
     //dtor
@@ -21,7 +21,7 @@ Atom<AtomType>::~Atom()
 
 
 
-template <class AtomType>
+template <typename AtomType>
 std::string Atom<AtomType>::toString()
 {
     std::ostringstream ss;
@@ -31,7 +31,7 @@ std::string Atom<AtomType>::toString()
 
 
 
-template <class AtomType>
+template <typename AtomType>
 bool Atom<AtomType>::operator==(const Atom& other)
 {
     return this->payload == other.payload;
