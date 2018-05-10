@@ -5,6 +5,7 @@
 #ifndef DIVISIBLEOBJECT_H
 #define DIVISIBLEOBJECT_H
 
+#include "Atom.h"
 #include <vector>
 
 
