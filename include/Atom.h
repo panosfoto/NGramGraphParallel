@@ -60,6 +60,8 @@ class Atom
         AtomType payload;
 };
 
+
 #include "Atom.tcc"
+
 
 #endif // ATOM_H

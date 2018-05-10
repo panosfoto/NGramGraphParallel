@@ -16,11 +16,13 @@
 
 struct ngg_vertex_property
 {
+    // e.g. Atom
     // TODO : implement
 };
 
 struct ngg_edge_property
 {
+    // e.g. weight (if only weight, maybe replace with boost's EdgeWeightProperty? )
     // TODO : implement
 };
 
