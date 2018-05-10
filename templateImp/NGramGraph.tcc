@@ -11,7 +11,18 @@
 template <typename PayloadType>
 NGramGraph<PayloadType>::NGramGraph()
 {
-    //ctor
+    //InitGraphs();
+}
+
+
+
+template <typename PayloadType>
+NGramGraph<PayloadType>::NGramGraph(unsigned int iMinSize, unsigned int iMaxSize, unsigned int iCorrelationWindow)
+{
+    this->MinSize = iMinSize;
+    this->MaxSize = iMaxSize;
+    this->CorrelationWindow = iCorrelationWindow;
+    //InitGraphs();
 }
 
 
