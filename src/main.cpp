@@ -6,6 +6,7 @@
 #include "Atom.h"
 #include "GraphSimilarity.h"
 #include "DivisibleObject.h"
+#include "NGramGraph.h"
 
 using namespace std;
 
@@ -26,9 +27,12 @@ int main(){
     }
     cout << endl;
     DivisibleObject<int> iDO(5);
+    iDO.splitPayloadToAtoms(2);
+
+    NGramGraph<string> g;
 
     GraphSimilarity gs(0.1, 0.4, 0.2);
-    cout << "Overall Similarity: " << gs.getOverallSimilarity() << endl;
+    cout << endl << "Overall Similarity: " << gs.getOverallSimilarity() << endl;
     map<string, double> gsValues =  gs.getSimilarityComponents();
     for (map<string, double>::iterator it = gsValues.begin() ; it != gsValues.end() ; ++it)
         cout << it->first << " => " << it->second << endl;
