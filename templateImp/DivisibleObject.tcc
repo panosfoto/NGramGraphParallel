@@ -4,6 +4,10 @@
 
 #include <sstream>
 #include <iostream>
+
+// used to get the name of a template's type (e.g. in generic splitPayloadToAtoms() )
+#include <boost/type_index.hpp>
+
 using namespace std;
 
 
@@ -58,7 +62,7 @@ template <typename DivisibleObjectType>
 void DivisibleObject<DivisibleObjectType>::splitPayloadToAtoms(unsigned int AtomSize)
 {
     // This function should always be specialized, so the generic function throws an error
-    cerr << "Error: splitPayloadToAtoms() not specialized for this class/type." << endl;
+    cerr << "Error: splitPayloadToAtoms() not specialized for type \"" << boost::typeindex::type_id<DivisibleObjectType>().pretty_name() << "\". Payload could not be split." << endl;
     //exit(-1);
 }
 
@@ -71,7 +75,7 @@ void DivisibleObject<string>::splitPayloadToAtoms(unsigned int AtomSize)
 {
     if (AtomSize > payload.length())
     {
-        cerr << "splitPayloadToAtoms(): Error: atom size provided is greater than the length of the payload. Payload could not be split." << endl;
+        cerr << "splitPayloadToAtoms(): Warning: atom size provided is greater than the length of the payload. Payload could not be split." << endl;
         return;
     }
     string tempString;
