@@ -3,6 +3,7 @@
  */
 
 #include <sstream>
+#include <iostream>
 using namespace std;
 
 
@@ -65,6 +66,7 @@ void DivisibleObject<DivisibleObjectType>::splitPayloadToAtoms(unsigned int Atom
 
 // template specialization for string payload/atoms
 template <>
+inline
 void DivisibleObject<string>::splitPayloadToAtoms(unsigned int AtomSize)
 {
     if (AtomSize > payload.length())
