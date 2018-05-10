@@ -4,6 +4,8 @@
 
 #include "GraphSimilarity.h"
 
+
+
 GraphSimilarity::GraphSimilarity()
 {
     this->valueSimilarity = 0.0;
@@ -12,12 +14,14 @@ GraphSimilarity::GraphSimilarity()
 }
 
 
+
 GraphSimilarity::GraphSimilarity(double valueSimilarity, double containmentSimilarity, double sizeSimilarity)
 {
     this->valueSimilarity = valueSimilarity;
     this->containmentSimilarity = containmentSimilarity;
     this->sizeSimilarity = sizeSimilarity;
 }
+
 
 
 map<string, double> GraphSimilarity::getSimilarityComponents()
@@ -31,6 +35,7 @@ map<string, double> GraphSimilarity::getSimilarityComponents()
     // Return
     return resultMap;
 }
+
 
 
 double GraphSimilarity::getOverallSimilarity()

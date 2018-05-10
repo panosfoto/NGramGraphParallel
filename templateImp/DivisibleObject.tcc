@@ -5,11 +5,15 @@
 #include <sstream>
 using namespace std;
 
+
+
 template <class DivisibleObjectType>
 DivisibleObject<DivisibleObjectType>::DivisibleObject(DivisibleObjectType object)
 {
     this->payload = object;
 }
+
+
 
 template <class DivisibleObjectType>
 DivisibleObject<DivisibleObjectType>::DivisibleObject(const DivisibleObject& sourceDivisibleObject)
@@ -18,12 +22,16 @@ DivisibleObject<DivisibleObjectType>::DivisibleObject(const DivisibleObject& sou
     //TODO: not implemented
 }
 
+
+
 template <class DivisibleObjectType>
 DivisibleObject<DivisibleObjectType>::~DivisibleObject()
 {
     //dtor
     //TODO: not implemented
 }
+
+
 /*
 template <class DivisibleObjectType>
 DivisibleObject& DivisibleObject::operator=(const DivisibleObject& rhs)
@@ -33,6 +41,8 @@ DivisibleObject& DivisibleObject::operator=(const DivisibleObject& rhs)
     return *this;
 }
 */
+
+
 template <class DivisibleObjectType>
 bool DivisibleObject<DivisibleObjectType>::operator==(const DivisibleObject& rhDivisibleObject)
 {
@@ -41,6 +51,8 @@ bool DivisibleObject<DivisibleObjectType>::operator==(const DivisibleObject& rhD
     return true;
 }
 
+
+
 template <class DivisibleObjectType>
 void DivisibleObject<DivisibleObjectType>::splitPayloadToAtoms(unsigned int AtomSize)
 {
@@ -48,6 +60,8 @@ void DivisibleObject<DivisibleObjectType>::splitPayloadToAtoms(unsigned int Atom
     cerr << "Error: splitPayloadToAtoms() not specialized for this class/type." << endl;
     //exit(-1);
 }
+
+
 
 // template specialization for string payload/atoms
 template <>
@@ -74,6 +88,8 @@ void DivisibleObject<string>::splitPayloadToAtoms(unsigned int AtomSize)
     }
 }
 
+
+
 template <class DivisibleObjectType>
 string DivisibleObject<DivisibleObjectType>::toString()
 {
@@ -81,6 +97,8 @@ string DivisibleObject<DivisibleObjectType>::toString()
     ss << payload;
     return ss.str();
 }
+
+
 
 template <class DivisibleObjectType>
 vector<string> DivisibleObject<DivisibleObjectType>::atomsToString()

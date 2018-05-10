@@ -24,8 +24,11 @@ class Atom
          *
          */
         Atom(AtomType initialValue);
+
+
         /** Default destructor for Atom class */
         virtual ~Atom();
+
 
         /**
          * Returns the Atom's data
@@ -33,11 +36,13 @@ class Atom
          */
         AtomType getPayload() { return payload; };
 
+
         /**
          * Provide a readable representation (string) of the data that the Atom holds
          * \return Returns a string made by the payload
          */
         std::string toString();
+
 
         /**
          * Compares the Atom with another Atom instance
@@ -46,6 +51,8 @@ class Atom
          * \note Should be class-based overwritten (template specialization) to compare correctly depending on class used.
          */
         bool operator==(const Atom& other);
+
+
     protected:
         /** \var payload
          * Payload is the data that the Atom holds

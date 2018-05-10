@@ -8,6 +8,7 @@
 #include "Similarity.h"
 
 
+
 /**
  * \Class A class that represents the similarity of graphs
  */
@@ -19,6 +20,8 @@ class GraphSimilarity : public Similarity
          */
         GraphSimilarity();
 
+
+
         /** \brief
          *      A constructor that initializes the similarity values with the according provided parameters
          * \param valueSimilarity (double) The valueSimilarity component value.
@@ -28,12 +31,16 @@ class GraphSimilarity : public Similarity
          */
         GraphSimilarity(double, double, double);
 
+
+
         /** \brief
          *      A function that returns a map of the similarity constituents, as pairs of the form <SimilarityName, SimilarityValue>.
          * \return map<string, double>
          *      A map with the values of the similarities
          */
         map<string, double> getSimilarityComponents();
+
+
 
         /** \brief
          *      Returns the overall similarity defined as:
@@ -44,16 +51,22 @@ class GraphSimilarity : public Similarity
          */
         double getOverallSimilarity();
 
+
+
     protected:
         /** \var valueSimilarity
          * Similarity regarding the existence and weight of edges of the graphs
          */
         double valueSimilarity;
 
+
+
         /** \var containmentSimilarity
          * Similarity regarding the existence of edges of the graphs
          */
         double containmentSimilarity;
+
+
 
         /** \var sizeSimilarity
          * Similarity regarding the number of edges of the graphs

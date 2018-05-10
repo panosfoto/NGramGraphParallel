@@ -8,6 +8,8 @@
 #include <map>
 using namespace std;
 
+
+
 /**
  * \Class An abstract class that represents a generic similarity interface. Such a similarity is considered to be composed of basic similarities (at least one)
  * which, through an appropriate calculation, determine the final, overall similarity.
@@ -22,6 +24,8 @@ class Similarity
          *      A map which contains pairs like <SimilarityName, SimilarityValue>
          */
         virtual map<string, double> getSimilarityComponents() = 0;
+
+
 
         /** \brief
          *      Calculates and returns the overall similarity, based on the constituents.
