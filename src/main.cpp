@@ -5,7 +5,7 @@
 #include <iostream>
 #include "Atom.hpp"
 #include "GraphSimilarity.hpp"
-#include "DivisibleObject.hpp"
+#include "Divider.hpp"
 #include "NGramGraph.hpp"
 
 using namespace std;
@@ -15,7 +15,9 @@ int main(){
     cout << iAtom.toString() << endl;
     cout << iAtom.getPayload() << endl << endl;
 
-    DivisibleObject<string> sDO("Hello");
+    //DivisibleObject<string> sDO("Hello");
+    Divider sDO;
+    sDO.setPayload("Hello!");
     sDO.splitPayloadToAtoms(3);
     cout << sDO.toString() << endl;
     cout << sDO.getPayload() << endl;
@@ -26,8 +28,8 @@ int main(){
         cout << *it << endl;
     }
     cout << endl;
-    DivisibleObject<int> iDO(5);
-    iDO.splitPayloadToAtoms(2);
+//    DivisibleObject<int> iDO(5);
+//    iDO.splitPayloadToAtoms(2);
 
     NGramGraph<string> g;
 

@@ -5,7 +5,7 @@
 #ifndef NGRAMGRAPH_H
 #define NGRAMGRAPH_H
 
-#include "DivisibleObject.hpp"
+#include "Divider.hpp"
 #include <boost/graph/directed_graph.hpp>
 #include <vector>
 
@@ -35,8 +35,6 @@
 
 
 
-// Define Graph type
-typedef boost::directed_graph<Atom<AtomType>, double> Graph;
 
 
 
@@ -89,6 +87,8 @@ class NGramGraph
          * \var NGramGraphArray A vector containing the graphs of the various n-gram sizes.
          *
          */
+        // Define Graph type
+        typedef boost::directed_graph<Atom<AtomType>, double> Graph;
         vector<Graph> NGramGraphArray;
 
 

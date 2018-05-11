@@ -24,7 +24,7 @@ class DivisibleObject
          * \param object The original object that will be split into Atoms.
          *
          */
-        DivisibleObject() = 0;
+        DivisibleObject();
 
 
 
@@ -63,11 +63,13 @@ class DivisibleObject
         //bool operator==(const DivisibleObject& rhDivisibleObject);
 
 
+        void setPayload(AtomType p){ this->payload = p; }
+
 
         /** \brief Accessor for payload variable
          * \return The DivisibleObject's payload
          */
-        DivisibleObjectType getPayload(){ return payload; }
+        AtomType getPayload(){ return payload; }
 
 
 
@@ -107,7 +109,7 @@ class DivisibleObject
         /** \var payload
          * Payload is the original object that the DivisibleObject instance holds, that can be split into Atoms
          */
-        DivisibleObjectType payload;
+        AtomType payload;
 
 
 

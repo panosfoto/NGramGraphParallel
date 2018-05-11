@@ -13,9 +13,9 @@ using namespace std;
 
 
 template <typename DivisibleObjectType>
-DivisibleObject<DivisibleObjectType>::DivisibleObject(DivisibleObjectType object)
+DivisibleObject<DivisibleObjectType>::DivisibleObject()
 {
-    this->payload = object;
+    ;
 }
 
 
