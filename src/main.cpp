@@ -5,7 +5,7 @@
 #include <iostream>
 #include "Atom.hpp"
 #include "GraphSimilarity.hpp"
-#include "Divider.hpp"
+#include "StringToCharDivider.hpp"
 #include "NGramGraph.hpp"
 
 using namespace std;
@@ -15,15 +15,14 @@ int main(){
     cout << iAtom.toString() << endl;
     cout << iAtom.getPayload() << endl << endl;
 
-    //DivisibleObject<string> sDO("Hello");
-    Divider sDO;
-    sDO.setPayload("Hello!");
-    sDO.splitPayloadToAtoms(3);
-    cout << sDO.toString() << endl;
-    cout << sDO.getPayload() << endl;
-    cout << "Number of atoms: " << sDO.getAtoms().size() << endl;
-    vector<string> sDOAtomsStrings = sDO.atomsToString();
-    for (vector<string>::iterator it = sDOAtomsStrings.begin() ; it != sDOAtomsStrings.end() ; ++it)
+    StringToCharDivider sCD;
+    sCD.setPayload("Hello");
+    sCD.splitPayloadToAtoms();
+    cout << sCD.toString() << endl;
+    cout << sCD.getPayload() << endl;
+    cout << "Number of atoms: " << sCD.getAtoms().size() << endl;
+    vector<string> sCDAtomsStrings = sCD.atomsToString();
+    for (vector<string>::iterator it = sCDAtomsStrings.begin() ; it != sCDAtomsStrings.end() ; ++it)
     {
         cout << *it << endl;
     }
