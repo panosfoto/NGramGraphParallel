@@ -15,7 +15,7 @@ using namespace std;
  * \Class A class that represents an object that can be split into Atoms.
  * Divisible objects are the entity that a N-gram graph holds. The graph splits the DivisibleObject to atoms, and creates a node for every atom created.
  */
-template <typename DivisibleObjectType>
+template <typename AtomType>
 class DivisibleObject
 {
     public:
@@ -24,7 +24,7 @@ class DivisibleObject
          * \param object The original object that will be split into Atoms.
          *
          */
-        DivisibleObject(DivisibleObjectType object);
+        DivisibleObject() = 0;
 
 
 
@@ -74,7 +74,7 @@ class DivisibleObject
         /** \brief Accessor for atoms variable
          * \return The DivisibleObject's atoms vector
          */
-        vector<Atom<DivisibleObjectType>> getAtoms(){ return atoms; }
+        vector<Atom<AtomType>> getAtoms(){ return atoms; }
 
 
 
@@ -111,11 +111,10 @@ class DivisibleObject
 
 
 
-        //CAUTION!! --> Is DivisibleObjectType correct type to use?
         /** \var atoms
          * A vector that holds the smallest pieces (atoms) of payload after it has been split.
          */
-        vector<Atom<DivisibleObjectType>> atoms;
+        vector<Atom<AtomType>> atoms;
 };
 
 

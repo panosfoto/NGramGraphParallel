@@ -18,21 +18,25 @@
 // Does the latter, though, go against the "Single-responsibility Principle" from S.O.L.I.D. Principles?
 // Also, is this the correct description for a n-gram graph?
 
-struct ngg_vertex_property
-{
-    // e.g. Atom
-    // TODO : implement
-};
+// OBSOLETE: (?)
+// struct ngg_vertex_property
+// {
+//     // e.g. Atom
+//     // TODO : implement
+// };
+// 
+// struct ngg_edge_property
+// {
+//     // e.g. weight (if only weight, maybe replace with boost's EdgeWeightProperty? )
+//     // TODO : implement
+// };
+// DONE: Use Atom instead of vertex property.
+// DONE: Use int instead of edge property.
 
-struct ngg_edge_property
-{
-    // e.g. weight (if only weight, maybe replace with boost's EdgeWeightProperty? )
-    // TODO : implement
-};
 
 
-
-typedef boost::directed_graph<ngg_vertex_property, ngg_edge_property> Graph;
+// Define Graph type
+typedef boost::directed_graph<Atom<AtomType>, double> Graph;
 
 
 
@@ -44,7 +48,7 @@ typedef boost::directed_graph<ngg_vertex_property, ngg_edge_property> Graph;
  * The graphs' vertices are the Atoms, and the edges are the number of the n-grams' co-occurrences (within a given window).
  * PayloadType is the type of data that will be used (e.g. std::string for documents).
  */
-template <typename PayloadType>
+template <typename AtomType>
 class NGramGraph
 {
     public:
@@ -77,7 +81,7 @@ class NGramGraph
          * \var payload The data that the graph holds and splits to Atoms (n-grams) to create the graph(s).
          *
          */
-        DivisibleObject<PayloadType> *payload;
+        DivisibleObject<AtomType> *payload;
 
 
 
