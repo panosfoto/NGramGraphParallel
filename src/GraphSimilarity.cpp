@@ -2,7 +2,7 @@
  * \file GraphSimilarity.cpp
  */
 
-#include "GraphSimilarity.h"
+#include "GraphSimilarity.hpp"
 
 
 

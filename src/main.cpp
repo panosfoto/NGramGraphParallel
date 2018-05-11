@@ -3,10 +3,10 @@
  */
 
 #include <iostream>
-#include "Atom.h"
-#include "GraphSimilarity.h"
-#include "DivisibleObject.h"
-#include "NGramGraph.h"
+#include "Atom.hpp"
+#include "GraphSimilarity.hpp"
+#include "DivisibleObject.hpp"
+#include "NGramGraph.hpp"
 
 using namespace std;
 

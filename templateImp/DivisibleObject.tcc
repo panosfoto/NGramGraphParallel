@@ -45,7 +45,7 @@ DivisibleObject& DivisibleObject::operator=(const DivisibleObject& rhs)
     //assignment operator
     return *this;
 }
-*/
+
 
 
 template <typename DivisibleObjectType>
@@ -55,7 +55,7 @@ bool DivisibleObject<DivisibleObjectType>::operator==(const DivisibleObject& rhD
     // How is equality between 2 DOs defined? Only payload or Atoms as well? Because Atoms might change due to splitPayloadToAtoms()
     return true;
 }
-
+*/
 
 
 template <typename DivisibleObjectType>

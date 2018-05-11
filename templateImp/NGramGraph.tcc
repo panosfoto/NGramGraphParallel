@@ -2,7 +2,7 @@
  * \file NGramGraph.cpp
  */
 
-#include "NGramGraph.h"
+#include "NGramGraph.hpp"
 
 #include <boost/graph/directed_graph.hpp>
 
