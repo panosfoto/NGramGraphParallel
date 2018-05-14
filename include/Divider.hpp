@@ -20,6 +20,13 @@ template <typename AtomType>
 class Divider
 {
     public:
+        /**
+         * Empty virtual destructor
+         */
+        virtual ~Divider(){}
+
+
+
         /** \brief Accessor for atoms variable
          * \return The DivisibleObject's atoms vector
          */
