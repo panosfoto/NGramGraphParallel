@@ -5,7 +5,7 @@
 #ifndef NGRAMGRAPH_H
 #define NGRAMGRAPH_H
 
-#include "Divider.hpp"
+#include "StringToCharDivider.hpp"
 #include <boost/graph/directed_graph.hpp>
 #include <vector>
 
@@ -13,10 +13,6 @@
 #define MAXSIZE_DEFAULT_VALUE 3
 #define CORRELATIONWINDOW_DEFAULT_VALUE 3
 
-// implementation discussion: templates vs subclasses
-// Maybe templates require the user or another class to pre-process the data to build a suitable class/type for the template, whereas in a subclass approach it would feel more "native".
-// Does the latter, though, go against the "Single-responsibility Principle" from S.O.L.I.D. Principles?
-// Also, is this the correct description for a n-gram graph?
 
 // OBSOLETE: (?)
 // struct ngg_vertex_property
@@ -35,22 +31,19 @@
 
 
 
-
-
-
 /**
  * \Class A class that represents a N-gram graph.
  *
- * A N-gram graph is an entity that holds a DivisibleObject entity and some graphs (depending on the arguments passed during construction).
- * It splits the DivisibleObject into Atoms, and with those Atoms creates the graphs that will represent the N-gram graph entity.
+ * A N-gram graph is an entity that holds a Divider entity and some graphs (depending on the arguments passed during construction).
+ * The Divider splits the data it holds into Atoms, and with those Atoms the N-gram graph creates the graphs that will represent itself.
  * The graphs' vertices are the Atoms, and the edges are the number of the n-grams' co-occurrences (within a given window).
- * PayloadType is the type of data that will be used (e.g. std::string for documents).
+ * AtomType is the type of data that will be used (e.g. std::string for documents).
  */
 template <typename AtomType>
 class NGramGraph
 {
     public:
-        /** Default constructor
+        /** Constructor
          * Creates a new instance of NGramGraph
          * MinSize, MaxSize and CorrelationWindow variables are all initialized to <var_name>_DEFAULT_VALUE defines (currently 3)
          */
@@ -69,26 +62,28 @@ class NGramGraph
 
 
 
-        /** Default destructor */
+        /**
+         * Destructor
+         */
         virtual ~NGramGraph();
 
 
 
-    protected:
         /**
-         * \var payload The data that the graph holds and splits to Atoms (n-grams) to create the graph(s).
+         * \var divider The data that the graph holds and splits to Atoms (n-grams) to create the graph(s).
          *
          */
-        DivisibleObject<AtomType> *payload;
+        StringToCharDivider divider;
 
 
 
+    protected:
+        // Define Graph type
+        typedef boost::directed_graph<Atom<AtomType>, int> Graph;
         /**
          * \var NGramGraphArray A vector containing the graphs of the various n-gram sizes.
          *
          */
-        // Define Graph type
-        typedef boost::directed_graph<Atom<AtomType>, double> Graph;
         vector<Graph> NGramGraphArray;
 
 
@@ -114,6 +109,13 @@ class NGramGraph
          *
          */
         unsigned int CorrelationWindow = CORRELATIONWINDOW_DEFAULT_VALUE;
+
+
+
+        /**
+         * Initializes the graphs used internally by the NGramGraph, creating a number of graphs according to the values parameter variables (MinSize, MaxSize).
+         */
+        void initGraphs();
 };
 
 
