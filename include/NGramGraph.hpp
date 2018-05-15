@@ -70,6 +70,13 @@ class NGramGraph
 
 
         /**
+         * Fills the graphs used internally by the NGramGraph, for all the levels specified in the MinSize, MaxSize range.
+         */
+        void createGraphs();
+
+
+
+        /**
          * \var divider The data that the graph holds and splits to Atoms (n-grams) to create the graph(s).
          *
          */
@@ -84,7 +91,7 @@ class NGramGraph
          * \var NGramGraphArray A vector containing the graphs of the various n-gram sizes.
          *
          */
-        vector<Graph> NGramGraphArray;
+        vector<Graph> graphArray;
 
 
 

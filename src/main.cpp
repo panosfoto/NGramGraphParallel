@@ -8,6 +8,8 @@
 #include "StringToCharDivider.hpp"
 #include "NGramGraph.hpp"
 
+#define TEXT_PAYLOAD "Betty Butters bought some bitter butter, but the butter was too bitter, so she bought a better butter to make the bitter butter better."
+
 using namespace std;
 
 int main(){
@@ -31,7 +33,7 @@ int main(){
 //    iDO.splitPayloadToAtoms(2);
 
     NGramGraph<string> g;
-    g.divider.setPayload("Divider!");
+    g.divider.setPayload(TEXT_PAYLOAD);
     g.divider.splitPayloadToAtoms();
     cout << g.divider.toString() << endl;
     cout << g.divider.getPayload() << endl;
