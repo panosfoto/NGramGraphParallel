@@ -44,6 +44,14 @@ class StringToCharDivider : public Divider<std::string>
 
 
         /**
+         * Returns the size of the payload string. Since this divider splits the string to character n-grams, the size of the payload string is its length.
+         * \return The length of the payload string.
+         */
+        unsigned int getPayloadSize();
+
+
+
+        /**
          * Provide a readable representation (string) of the data (payload) that the Divider holds.
          * \return Returns a string representing the Divider's payload.
          */

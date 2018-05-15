@@ -58,3 +58,10 @@ void StringToCharDivider::splitPayloadToAtoms()
         delete tempAtom;
     }
 }
+
+
+
+unsigned int StringToCharDivider::getPayloadSize()
+{
+    return payload.length();
+}

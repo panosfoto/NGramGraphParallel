@@ -36,7 +36,7 @@ class Divider
 
         /**
          * Provide a readable representation (string) of the data (payload) that the Divider holds.
-         * \return Returns a string representing the Divider's payload.
+         * \return A string representing the Divider's payload.
          */
         virtual std::string toString() = 0;
 
@@ -44,9 +44,19 @@ class Divider
 
         /**
          * Provide a readable representation (string) of the data that the Divider's Atoms hold.
-         * \return Returns a vector containing the string representation of each Atom.
+         * \return A vector containing the string representation of each Atom.
          */
         virtual vector<std::string> atomsToString() = 0;
+
+
+
+        /**
+         * Returns the size of the payload, according to the payload type and divider type.\n
+         * For example, if the payload is a string (e.g. a text) and the divider splits it to character n-grams, this function will return the length of the string.
+         * If the divider splits the string to word n-grams, the return value will be the number of words in the text.
+         * \return The size of the payload.
+         */
+        virtual unsigned int getPayloadSize() = 0;
 
 
 
