@@ -54,5 +54,6 @@ void StringToCharDivider::splitPayloadToAtoms()
         tempString.push_back('\0');
         tempAtom = new Atom<std::string>(tempString);
         atoms.push_back(*tempAtom);
+        delete tempAtom;
     }
 }
