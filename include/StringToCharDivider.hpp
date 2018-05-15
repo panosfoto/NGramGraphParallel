@@ -22,10 +22,17 @@ class StringToCharDivider : public Divider<std::string>
 
 
 
+        /** Mutator for atomSize variable.
+         * \param setValue The new atom size that the StringToCharDivider will split its payload to.
+         */
+        void setAtomSize(unsigned int newAtomSizeValue){ this->atomSize = newAtomSizeValue; }
+
+
+
         /** Mutator for payload variable.
          * \param setValue The new string that the StringToCharDivider will hold.
          */
-        void setPayload(std::string setValue){ this->payload = setValue; }
+        void setPayload(std::string newPayloadValue){ this->payload = newPayloadValue; }
 
 
 

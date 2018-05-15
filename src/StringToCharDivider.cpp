@@ -38,6 +38,7 @@ void StringToCharDivider::splitPayloadToAtoms()
 {
     if (atomSize > payload.length())
     {
+        // TODO : replace with exception throwing
         cerr << "splitPayloadToAtoms(): Warning: atom size provided is greater than the length of the payload. Payload could not be split." << endl;
         return;
     }
