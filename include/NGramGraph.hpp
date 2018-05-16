@@ -6,7 +6,10 @@
 #define NGRAMGRAPH_H
 
 #include "StringToCharDivider.hpp"
+
 #include <boost/graph/directed_graph.hpp>
+#include <boost/property_map/property_map.hpp>
+
 #include <vector>
 
 #define MINSIZE_DEFAULT_VALUE 3
@@ -15,19 +18,19 @@
 
 
 // OBSOLETE: (?)
-// struct ngg_vertex_property
-// {
-//     // e.g. Atom
-//     // TODO : implement
-// };
-//
 // struct ngg_edge_property
 // {
 //     // e.g. weight (if only weight, maybe replace with boost's EdgeWeightProperty? )
 //     // TODO : implement
 // };
-// DONE: Use Atom instead of vertex property.
 // DONE: Use int instead of edge property.
+
+// Create atom property for vertices (each vertex will hold an Atom).
+// Below property installation is needed so that we can also refer to vertices based on their Atom, instead of just by their vertex descriptor.
+enum vertex_atom_t { vertex_atom };
+namespace boost {
+  BOOST_INSTALL_PROPERTY(vertex, atom);
+}
 
 
 
@@ -85,8 +88,11 @@ class NGramGraph
 
 
     protected:
-        // Define Graph type
-        typedef boost::directed_graph<Atom<AtomType>, int> Graph;
+        // Define vertex property: With this property (vertex_atom), each vertex is associated with its Atom.
+        // We can then refer to a vertex by its Atom, by getting its vertex descriptor by querying a property map with its Atom.
+        typedef boost::property<vertex_atom_t, Atom<AtomType>> atom_property;
+        // Define Graph type: Vertices' property is the atom_property (atoms), Edges' property is their weight (an integer).
+        typedef boost::directed_graph<atom_property, int> Graph;
         /**
          * \var NGramGraphArray A vector containing the graphs of the various n-gram sizes.
          *
