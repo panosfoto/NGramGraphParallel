@@ -45,6 +45,13 @@ namespace boost {
 template <typename AtomType>
 class NGramGraph
 {
+    // Define vertex property: With this property (vertex_atom), each vertex is associated with its Atom.
+    // We can then refer to a vertex by its Atom, by getting its vertex descriptor by querying a property map with its Atom.
+    typedef boost::property<vertex_atom_t, Atom<AtomType>> atom_property;
+
+    // Define atomGraph type: Vertices' property is the atom_property (atoms), Edges' property is their weight (an integer).
+    typedef boost::directed_graph<atom_property, int> atomGraph;
+
     public:
         /** Constructor
          * Creates a new instance of NGramGraph
@@ -80,6 +87,43 @@ class NGramGraph
 
 
         /**
+         * Searches for a vertex that holds the given Atom in the graph.
+         * On success, returns true and assigns the found vertex to the result_vertex parameter.
+         * On failure, returns false and doesn't change the result_vertex parameter.
+         * \param gGraph The graph to use.
+         * \param atom_param The Atom we're looking for.
+         * \param vReturnVertex A vertex reference, which will be filled with the vertex descriptor in case the target vertex is found.
+         * \return True if the vertex was found, otherwise False.
+         */
+        bool findVertex(atomGraph gGraph, Atom<AtomType> aAtomParam, typename atomGraph::vertex_descriptor & vReturnVertex);
+
+
+
+        /**
+         * Searches for a vertex that holds the given Atom in the graph.
+         * If it finds it, returns the found vertex.
+         * If it doesn't, it adds a new vertex holding the given Atom, and then returns it.
+         * \param gGraph The graph to use.
+         * \param atom_param The Atom we want to add (and are searching for).
+         * \return The vertex descriptor for the newly added or found vertex.
+         */
+        typename atomGraph::vertex_descriptor addOrFindVertex(atomGraph gGraph, Atom<AtomType> aAtomParam);
+
+
+
+        // TODO : update documentation about weight modification in case the edge already exists
+        /**
+         * Creates and edge in [gGraph] connecting [vStartVertex] to each vertex in the [vec_vNeighbors] vector of vertices.
+         * If the edge already exists, its weight is modified.
+         * \param gGraph The graph to use.
+         * \param vStartVertex A vertex descriptor for the vertex from which all edges begin.
+         * \param vec_vNeighbors A vector with the vertex descriptors of all the vertices to which the vertex will be connected (or already is.)
+         */
+        void addEdges(atomGraph gGraph, typename atomGraph::vertex_descriptor vStartVertex, vector<typename atomGraph::vertex_descriptor> vec_vNeighbors);
+
+
+
+        /**
          * \var divider The data that the graph holds and splits to Atoms (n-grams) to create the graph(s).
          *
          */
@@ -88,16 +132,11 @@ class NGramGraph
 
 
     protected:
-        // Define vertex property: With this property (vertex_atom), each vertex is associated with its Atom.
-        // We can then refer to a vertex by its Atom, by getting its vertex descriptor by querying a property map with its Atom.
-        typedef boost::property<vertex_atom_t, Atom<AtomType>> atom_property;
-        // Define Graph type: Vertices' property is the atom_property (atoms), Edges' property is their weight (an integer).
-        typedef boost::directed_graph<atom_property, int> Graph;
         /**
          * \var NGramGraphArray A vector containing the graphs of the various n-gram sizes.
          *
          */
-        vector<Graph> graphArray;
+        vector<atomGraph> graphArray;
 
 
 
