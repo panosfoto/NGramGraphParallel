@@ -18,6 +18,16 @@ template <typename AtomType>
 class Atom
 {
     public:
+        // Parameter-less constructor added to avoid errors with boost property initialization:
+        // Atom used as template parameter, and by default it calls a parameter less constructor.
+        // TODO : check if there is a way to bypass this (e.g. providing an empty string ("") as default parameter).
+        /**
+         * Constructor for Atom class.
+         * \note Payload is not initialized with this constructor, setPayload() should be used to avoid undefined behavior by uninitialized payloads.
+         */
+        Atom() {}
+
+
         /**
          * Constructor for Atom class.
          * \param initialValue The data that the Atom will hold
