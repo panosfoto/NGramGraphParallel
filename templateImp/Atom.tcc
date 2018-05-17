@@ -36,3 +36,11 @@ bool Atom<AtomType>::operator==(const Atom& other)
 {
     return this->payload == other.payload;
 }
+
+
+
+template <typename AtomType>
+void Atom<AtomType>::operator=(const Atom& aSource)
+{
+    this->payload = aSource.payload;
+}
