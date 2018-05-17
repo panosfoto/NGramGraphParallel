@@ -41,26 +41,41 @@ class Atom
 
 
         /**
-         * Returns the Atom's data
-         * \return payload AtomType payload is the data that the Atom holds
+         * Returns the Atom's data.
+         * \return payload payload is the data that the Atom holds.
          */
         AtomType getPayload() { return payload; };
 
 
         /**
+         * Updates the Atom's data.
+         * \param newPayload The new data that the Atom will be holding.
+         */
+        void setPayload(AtomType newPayload) { payload = newPayload; };
+
+
+        /**
          * Provide a readable representation (string) of the data that the Atom holds
-         * \return Returns a string made by the payload
+         * \return Returns a string made by the payload.
          */
         std::string toString();
 
 
         /**
-         * Compares the Atom with another Atom instance
-         * \param other A reference to an Atom instance to be compared with
-         * \return A boolean value: True if the two Atoms are identical, otherwise False
+         * Compares the Atom with another Atom instance.
+         * \param other A reference to an Atom instance to be compared with.
+         * \return A boolean value: True if the two Atoms are identical, otherwise False.
          * \note Should be type-based overwritten (template specialization) to compare correctly depending on type used.
          */
         bool operator==(const Atom& other);
+
+
+        /**
+         * Assignment operator for Atom instances.
+         * \param aSource A reference to the source Atom instance, whose values will be assigned to this.
+         * \note Should be type-based overwritten (template specialization) to assign correctly depending on type used.
+         */
+        void operator=(const Atom& aSource);
 
 
     protected:
