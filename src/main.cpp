@@ -7,8 +7,10 @@
 #include "GraphSimilarity.hpp"
 #include "StringToCharDivider.hpp"
 #include "NGramGraph.hpp"
+#include "UniqueVertexGraph.hpp"
 
-#define TEXT_PAYLOAD "Betty Butters bought some bitter butter, but the butter was too bitter, so she bought a better butter to make the bitter butter better."
+//#define TEXT_PAYLOAD "Betty Butters bought some bitter butter, but the butter was too bitter, so she bought a better butter to make the bitter butter better."
+#define TEXT_PAYLOAD "Hope..."
 
 using namespace std;
 
