@@ -1,15 +1,32 @@
 /**
- * \file UniqueVertexGraph.cpp
+ * \file UniqueVertexGraph.tcc
  */
 
+#include "UniqueVertexGraph.hpp"
 
 
-UniqueVertexGraph::UniqueVertexGraph()
+
+template <typename AtomType>
+UniqueVertexGraph<AtomType>::UniqueVertexGraph()
 {
     //ctor
 }
 
-UniqueVertexGraph::~UniqueVertexGraph()
+
+
+template <typename AtomType>
+UniqueVertexGraph<AtomType>::~UniqueVertexGraph()
 {
     //dtor
+}
+
+
+
+template <typename AtomType>
+void UniqueVertexGraph<AtomType>::addVertex(AtomType aAtom)
+{
+    if (UniqueVertices.find(aAtom) == UniqueVertices.end())
+        UniqueVertices[aAtom] = graph.add_vertex();
+//    else  // vertex already exists, so throw exception
+//        // throw Exception
 }

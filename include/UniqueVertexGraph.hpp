@@ -20,6 +20,17 @@ class UniqueVertexGraph
         /** Default destructor */
         virtual ~UniqueVertexGraph();
 
+
+
+        // TODO : Add Exception documentation
+        /** Adds a new vertex to the graph. If a vertex holding the same Atom already exists it doesn't add a new one, but instead throws an Exception.
+         * \param aAtom The Atom that will be added to the graph.
+         * \throws AddingExistingVertexException
+         */
+        void addVertex(AtomType aAtom);
+
+
+
     protected:
         typedef boost::property<boost::edge_weight_t, float> EdgeWeightProperty;
         typedef boost::directed_graph<boost::no_property, EdgeWeightProperty> Graph;
@@ -37,5 +48,9 @@ class UniqueVertexGraph
          */
         std::unordered_map<Atom<AtomType>, Graph::vertex_descriptor> UniqueVertices;
 };
+
+
+#include "UniqueVertexGraph.tcc"
+
 
 #endif // UNIQUEVERTEXGRAPH_HPP
