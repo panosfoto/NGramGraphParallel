@@ -44,7 +44,7 @@ class Atom
          * Returns the Atom's data.
          * \return payload payload is the data that the Atom holds.
          */
-        AtomType getPayload() { return payload; };
+        AtomType getPayload() const { return payload; };
 
 
         /**
@@ -67,7 +67,7 @@ class Atom
          * \return A boolean value: True if the two Atoms are identical, otherwise False.
          * \note Should be type-based overwritten (template specialization) to compare correctly depending on type used.
          */
-        bool operator==(const Atom& other);
+        bool operator==(const Atom& other) const;
 
 
         /**
