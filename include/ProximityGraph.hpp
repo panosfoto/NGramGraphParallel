@@ -27,7 +27,9 @@ class ProximityGraph : public UniqueVertexGraph<AtomType>
 
 
 
-        /** Constructor that initializes the CorrelationWindow variable */
+        /** Constructor that initializes the CorrelationWindow variable
+         * \param CorrelationWindowValue The new value for the CorrelationWindow variable.
+         */
         ProximityGraph(unsigned int CorrelationWindowValue);
 
 
@@ -38,6 +40,7 @@ class ProximityGraph : public UniqueVertexGraph<AtomType>
 
 
         /** Accessor for CorrelationWindow variable.
+         * \return The current value of the CorrelationWindow variable.
          */
         unsigned int getCorrelationWindow() { return CorrelationWindow; }
 
