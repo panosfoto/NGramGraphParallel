@@ -5,21 +5,35 @@
 #ifndef UNIQUEVERTEXGRAPH_HPP
 #define UNIQUEVERTEXGRAPH_HPP
 
+// system headers
 #include <boost/graph/directed_graph.hpp>
 #include <unordered_map>
 
+// project headers
 #include "Atom.hpp"
 
 
+// defines
 #define EDGE_WEIGHT_TYPE double
+
+
+// typedefs
+typedef boost::property<boost::edge_weight_t, EDGE_WEIGHT_TYPE> EdgeWeightProperty;
+typedef boost::directed_graph<boost::no_property, EdgeWeightProperty> Graph;
+typedef boost::property_map<Graph, boost::edge_weight_t>::type EdgeWeightMap;
 
 
 template <typename AtomType>
 class UniqueVertexGraph
 {
     public:
-        /** Default constructor */
+        /**
+         * Constructor for the UniqueVertexGraph class.
+         */
         UniqueVertexGraph();
+
+
+
         /** Default destructor */
         virtual ~UniqueVertexGraph();
 
@@ -30,7 +44,7 @@ class UniqueVertexGraph
          * \param aAtom The Atom that will be added to the graph.
          * \throws TryingToAddExistingVertexException
          */
-        void addVertex(AtomType aAtom);
+        void addVertex(Atom<AtomType> aAtom);
 
 
 
@@ -41,13 +55,11 @@ class UniqueVertexGraph
          * \param aTail The Atom that is the tail of the edge that will be added to the graph.
          * \param edgeWeight The weight of the edge that will be added/updated to the graph.
          */
-        void addEdge(AtomType aHead, AtomType aTail, EDGE_WEIGHT_TYPE edgeWeight);
+        void addEdge(Atom<AtomType> aHead, Atom<AtomType> aTail, EDGE_WEIGHT_TYPE edgeWeight);
 
 
 
     protected:
-        typedef boost::property<boost::edge_weight_t, EDGE_WEIGHT_TYPE> EdgeWeightProperty;
-        typedef boost::directed_graph<boost::no_property, EdgeWeightProperty> Graph;
 
         /**
          * \var graph The graph of the UniqueVertexGraph.
@@ -58,9 +70,16 @@ class UniqueVertexGraph
 
 
         /**
-         * \var UniqueVertices A hashtable containing pairs <Atom, Vertex> used to uniquely identify each vertex
+         * \var UniqueVertices A hashtable containing pairs <Atom, Vertex> used to uniquely identify each vertex.
          */
         std::unordered_map<Atom<AtomType>, Graph::vertex_descriptor> UniqueVertices;
+
+
+
+        /**
+         * \var edgeWeightMap A (boost::property_map) map used to retrieve the weight of the edges.
+         */
+        EdgeWeightMap edgeWeightMap;
 };
 
 
