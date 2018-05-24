@@ -6,7 +6,7 @@
 #include "Atom.hpp"
 #include "GraphSimilarity.hpp"
 #include "StringToCharDivider.hpp"
-//#include "NGramGraph.hpp"
+#include "NGramGraph.hpp"
 #include "UniqueVertexGraph.hpp"
 
 //#define TEXT_PAYLOAD "Betty Butters bought some bitter butter, but the butter was too bitter, so she bought a better butter to make the bitter butter better."
@@ -42,6 +42,9 @@ int main(){
     uvg.addEdge(a1, a2, 2.43);
     cout << uvg.contains(a1) << " " << uvg.contains(a2) << " " << uvg.contains(a3) << endl;
     cout << endl;
+
+    NGramGraph ngg(5, 3);
+    cout << "Correlation window: " << ngg.getCorrelationWindow() << ", nGram size: " << ngg.getNGramSize() << ", payload size: " << ngg.getPayloadSize() << endl;
 
 //    NGramGraph<string> g;
 //    g.divider.setPayload(TEXT_PAYLOAD);
