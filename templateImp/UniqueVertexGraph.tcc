@@ -47,6 +47,24 @@ bool UniqueVertexGraph<AtomType>::contains(Atom<AtomType> aAtom)
 
 
 template <typename AtomType>
+void UniqueVertexGraph<AtomType>::addEdge(typename Graph::vertex_descriptor vHead, typename Graph::vertex_descriptor vTail, EDGE_WEIGHT_TYPE edgeWeight)
+{
+    std::pair<Graph::edge_descriptor, bool> edge = boost::edge(vHead, vTail, graph);
+    //check if edge exists
+    if (edge.second == false) // edge doesn't exist, so add it
+    {
+        EdgeWeightProperty ewp = edgeWeight;
+        boost::add_edge(vHead, vTail, ewp, graph);
+    }
+    else    // edge.second == true, edge exists, so update its weight
+    {
+        edgeWeightMap[edge.first] += edgeWeight;
+    }
+}
+
+
+
+template <typename AtomType>
 void UniqueVertexGraph<AtomType>::addEdge(Atom<AtomType> aHead, Atom<AtomType> aTail, EDGE_WEIGHT_TYPE edgeWeight)
 {
     typename Graph::vertex_descriptor vHead, vTail;
