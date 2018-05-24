@@ -18,15 +18,16 @@ class StringToCharDivider : public Divider<std::string>
 
 
 
+        /**
+         * Constructor that initializes atomSize.
+         * \param atomSizeValue The new value for the atomSize variable.
+         */
+        StringToCharDivider(unsigned int atomSizeValue);
+
+
+
         /** Default destructor */
         virtual ~StringToCharDivider();
-
-
-
-        /** Mutator for atomSize variable.
-         * \param setValue The new atom size that the StringToCharDivider will split its payload to.
-         */
-        void setAtomSize(unsigned int newAtomSizeValue){ this->atomSize = newAtomSizeValue; }
 
 
 
@@ -81,14 +82,6 @@ class StringToCharDivider : public Divider<std::string>
          * Payload is the original string that the Divider instance holds, e.g. the text/document that will be split into atoms.
          */
         std::string payload;
-
-
-
-        /** \var atomSize
-         * The length of each atom in characters.\n
-         * Defaults to 3.
-         */
-        unsigned int atomSize = 3;
 };
 
 #endif // STRINGTOCHARDIVIDER_H

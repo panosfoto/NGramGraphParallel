@@ -15,6 +15,13 @@ StringToCharDivider::StringToCharDivider()
 
 
 
+StringToCharDivider::StringToCharDivider(unsigned int atomSizeValue) : Divider(atomSizeValue)
+{
+    //ctor
+}
+
+
+
 StringToCharDivider::~StringToCharDivider()
 {
     //dtor

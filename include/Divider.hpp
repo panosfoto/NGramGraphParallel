@@ -11,6 +11,9 @@
 // project headers
 #include "Atom.hpp"
 
+// defines
+#define ATOMSIZE_DEFAULT_VALUE 3
+
 
 using namespace std;
 
@@ -25,16 +28,45 @@ class Divider
 {
     public:
         /**
+         * Default constructor. atomSize set to ATOMSIZE_DEFAULT_VALUE.
+         */
+        Divider(){ atomSize = ATOMSIZE_DEFAULT_VALUE; }
+
+
+
+        /**
+         * Constructor that initializes atomSize.
+         * \param atomSizeValue The new value for the atomSize variable.
+         */
+        Divider(unsigned int atomSizeValue){ atomSize = atomSizeValue; }
+
+
+
+        /**
          * Empty virtual destructor
          */
         virtual ~Divider(){}
 
 
 
-        /** \brief Accessor for atoms variable
+        /** Accessor for atoms vector
          * \return The DivisibleObject's atoms vector
          */
         vector<Atom<AtomType>> getAtoms(){ return atoms; }
+
+
+
+        /** Mutator for atomSize variable.
+         * \param setValue The new atom size that the StringToCharDivider will split its payload to.
+         */
+        void setAtomSize(unsigned int newAtomSizeValue){ this->atomSize = newAtomSizeValue; }
+
+
+
+        /** Accessor for atomSize variable.
+         * \return Current atom size that the StringToCharDivider will split its payload to.
+         */
+        unsigned int getAtomSize(){ return atomSize; }
 
 
 
@@ -80,6 +112,11 @@ class Divider
 
 
 
+        /** \var atomSize
+         * The length of each atom in characters.\n
+         * Defaults to ATOMSIZE_DEFAULT_VALUE.
+         */
+        unsigned int atomSize;
 };
 
 
