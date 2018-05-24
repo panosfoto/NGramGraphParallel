@@ -11,6 +11,7 @@
 
 // defines
 #define NGRAMSIZE_DEFAULT_VALUE 3
+#define EDGE_WEIGHT_DEFAULT_VALUE 1.0
 
 
 /**
@@ -95,6 +96,14 @@ class NGramGraph : public ProximityGraph<std::string>
          *
          */
         StringToCharDivider divider;
+
+
+
+        /** Creates (or updates) an edge from vHead vertex to each vertex in the neighbors vector.
+         * \param vHead The vertex from which the edges begin.
+         * \param neighbors A vector containing the vertices who will be the tails of the edges.
+         */
+        void createEdgesToNeighbors(Graph::vertex_descriptor vHead, vector<typename Graph::vertex_descriptor> neighbors);
 
 
 

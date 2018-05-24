@@ -43,8 +43,10 @@ int main(){
     cout << uvg.contains(a1) << " " << uvg.contains(a2) << " " << uvg.contains(a3) << endl;
     cout << endl;
 
-    NGramGraph ngg(5, 3);
+    NGramGraph ngg(1, 3);
     cout << "Correlation window: " << ngg.getCorrelationWindow() << ", nGram size: " << ngg.getNGramSize() << ", payload size: " << ngg.getPayloadSize() << endl;
+    ngg.setPayload("Hello");
+    ngg.createGraph();
 
 //    NGramGraph<string> g;
 //    g.divider.setPayload(TEXT_PAYLOAD);
