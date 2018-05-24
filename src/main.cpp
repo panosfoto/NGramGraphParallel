@@ -34,6 +34,15 @@ int main(){
 //    DivisibleObject<int> iDO(5);
 //    iDO.splitPayloadToAtoms(2);
 
+    Atom<string> a1("a1"), a2("a2"), a3("a3");
+    UniqueVertexGraph<string> uvg;
+    uvg.addVertex(a1);
+    uvg.addVertex(a2);
+    uvg.addEdge(a1, a2, 1.43);
+    uvg.addEdge(a1, a2, 2.43);
+    cout << uvg.contains(a1) << " " << uvg.contains(a2) << " " << uvg.contains(a3) << endl;
+    cout << endl;
+
     NGramGraph<string> g;
     g.divider.setPayload(TEXT_PAYLOAD);
     g.divider.splitPayloadToAtoms();
