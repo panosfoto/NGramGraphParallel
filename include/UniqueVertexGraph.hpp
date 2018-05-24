@@ -23,6 +23,10 @@ typedef boost::directed_graph<boost::no_property, EdgeWeightProperty> Graph;
 typedef boost::property_map<Graph, boost::edge_weight_t>::type EdgeWeightMap;
 
 
+/**
+ * \Class A class that represents a weighted graph with unique vertices.
+ *
+ */
 template <typename AtomType>
 class UniqueVertexGraph
 {
@@ -56,6 +60,13 @@ class UniqueVertexGraph
          * \param edgeWeight The weight of the edge that will be added/updated to the graph.
          */
         void addEdge(Atom<AtomType> aHead, Atom<AtomType> aTail, EDGE_WEIGHT_TYPE edgeWeight);
+
+
+
+        /** Checks whether a given vertex exists in this graph.
+         * \param aAtom The Atom that we are searching for in the graph.
+         */
+        bool contains(Atom<AtomType> aAtom);
 
 
 

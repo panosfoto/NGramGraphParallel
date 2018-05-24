@@ -35,6 +35,18 @@ void UniqueVertexGraph<AtomType>::addVertex(Atom<AtomType> aAtom)
 
 
 template <typename AtomType>
+bool UniqueVertexGraph<AtomType>::contains(Atom<AtomType> aAtom)
+{
+    typename std::unordered_map<Atom<AtomType>, Graph::vertex_descriptor>::const_iterator umIt;
+    umIt = UniqueVertices.find(aAtom);
+    if (umIt == UniqueVertices.end())
+        return false;
+    return true;
+}
+
+
+
+template <typename AtomType>
 void UniqueVertexGraph<AtomType>::addEdge(Atom<AtomType> aHead, Atom<AtomType> aTail, EDGE_WEIGHT_TYPE edgeWeight)
 {
     typename Graph::vertex_descriptor vHead, vTail;
