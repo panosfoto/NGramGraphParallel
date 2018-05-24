@@ -3,13 +3,14 @@
  */
 
 #include "UniqueVertexGraph.hpp"
-
+#include <iostream>
 
 
 template <typename AtomType>
 UniqueVertexGraph<AtomType>::UniqueVertexGraph()
 {
     //ctor
+    edgeWeightMap = get(boost::edge_weight, graph);
 }
 
 
@@ -23,7 +24,7 @@ UniqueVertexGraph<AtomType>::~UniqueVertexGraph()
 
 
 template <typename AtomType>
-void UniqueVertexGraph<AtomType>::addVertex(AtomType aAtom)
+void UniqueVertexGraph<AtomType>::addVertex(Atom<AtomType> aAtom)
 {
     if (UniqueVertices.find(aAtom) == UniqueVertices.end())
         UniqueVertices[aAtom] = graph.add_vertex();
@@ -34,7 +35,7 @@ void UniqueVertexGraph<AtomType>::addVertex(AtomType aAtom)
 
 
 template <typename AtomType>
-void UniqueVertexGraph<AtomType>::addEdge(AtomType aHead, AtomType aTail, EDGE_WEIGHT_TYPE edgeWeight)
+void UniqueVertexGraph<AtomType>::addEdge(Atom<AtomType> aHead, Atom<AtomType> aTail, EDGE_WEIGHT_TYPE edgeWeight)
 {
     typename Graph::vertex_descriptor vHead, vTail;
     typename std::unordered_map<Atom<AtomType>, Graph::vertex_descriptor>::const_iterator umIt;
@@ -55,6 +56,18 @@ void UniqueVertexGraph<AtomType>::addEdge(AtomType aHead, AtomType aTail, EDGE_W
 
     // vertices located, search if edge already exists
     std::pair<Graph::edge_descriptor, bool> edge = boost::edge(vHead, vTail, graph);
-    //check if edge exists; add if it doesn't, update if it does
-    //
+    //check if edge exists
+//    std::cout << "Exists: " << edge.second << std::endl;    // DEBUG
+    if (edge.second == false) // edge doesn't exist, so add it
+    {
+        EdgeWeightProperty ewp = edgeWeight;
+        boost::add_edge(vHead, vTail, ewp, graph);
+//        std::cout << "Exists: " << boost::edge(vHead, vTail, graph).second << " with weight " << boost::get( boost::edge_weight, graph, boost::edge(vHead, vTail, graph).first ) << std::endl;  // DEBUG
+    }
+    else    // edge.second == true, edge exists, so update its weight
+    {
+        //EdgeWeightMap edgeWeightMap = get(boost::edge_weight, graph);
+        edgeWeightMap[edge.first] += edgeWeight;
+//        std::cout << "Exists: " << boost::edge(vHead, vTail, graph).second << " with weight " << boost::get( boost::edge_weight, graph, boost::edge(vHead, vTail, graph).first ) << std::endl;  // DEBUG
+    }
 }
