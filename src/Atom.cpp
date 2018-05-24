@@ -1,3 +1,7 @@
+/**
+ * \file Atom.cpp
+ */
+
 #include "Atom.hpp"
 
 

@@ -5,8 +5,12 @@
 #ifndef DIVIDER_H
 #define DIVIDER_H
 
-#include "Atom.hpp"
+// system headers
 #include <vector>
+
+// project headers
+#include "Atom.hpp"
+
 
 using namespace std;
 

@@ -2,8 +2,8 @@
  * \file UniqueVertexGraph.hpp
  */
 
-#ifndef UNIQUEVERTEXGRAPH_HPP
-#define UNIQUEVERTEXGRAPH_HPP
+#ifndef UNIQUEVERTEXGRAPH_H
+#define UNIQUEVERTEXGRAPH_H
 
 // system headers
 #include <boost/graph/directed_graph.hpp>
@@ -94,7 +94,8 @@ class UniqueVertexGraph
 };
 
 
+// template implementation file
 #include "UniqueVertexGraph.tcc"
 
 
-#endif // UNIQUEVERTEXGRAPH_HPP
+#endif // UNIQUEVERTEXGRAPH_H

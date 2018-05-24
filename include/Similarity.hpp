@@ -5,9 +5,11 @@
 #ifndef SIMILARITY_H
 #define SIMILARITY_H
 
+// system headers
 #include <map>
-using namespace std;
 
+
+using namespace std;
 
 
 /**

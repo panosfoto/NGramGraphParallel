@@ -5,6 +5,7 @@
 #ifndef ATOM_H
 #define ATOM_H
 
+// system headers
 #include <string>
 
 
@@ -86,6 +87,7 @@ class Atom
 };
 
 
+// template implementation file
 #include "Atom.tcc"
 
 

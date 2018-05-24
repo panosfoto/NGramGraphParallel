@@ -5,10 +5,11 @@
 #ifndef STRINGTOCHARDIVIDER_H
 #define STRINGTOCHARDIVIDER_H
 
-#include <Divider.hpp>
+// project headers
+#include "Divider.hpp"
 
 
-
+// TODO : Add Documentation
 class StringToCharDivider : public Divider<std::string>
 {
     public:

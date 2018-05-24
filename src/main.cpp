@@ -6,7 +6,7 @@
 #include "Atom.hpp"
 #include "GraphSimilarity.hpp"
 #include "StringToCharDivider.hpp"
-#include "NGramGraph.hpp"
+//#include "NGramGraph.hpp"
 #include "UniqueVertexGraph.hpp"
 
 //#define TEXT_PAYLOAD "Betty Butters bought some bitter butter, but the butter was too bitter, so she bought a better butter to make the bitter butter better."
@@ -43,18 +43,18 @@ int main(){
     cout << uvg.contains(a1) << " " << uvg.contains(a2) << " " << uvg.contains(a3) << endl;
     cout << endl;
 
-    NGramGraph<string> g;
-    g.divider.setPayload(TEXT_PAYLOAD);
-    g.divider.splitPayloadToAtoms();
-    cout << g.divider.toString() << endl;
-    cout << g.divider.getPayload() << endl;
-    cout << "Number of atoms: " << g.divider.getAtoms().size() << endl;
-    vector<string> gDAtomsStrings = g.divider.atomsToString();
-    for (vector<string>::iterator it = gDAtomsStrings.begin() ; it != gDAtomsStrings.end() ; ++it)
-    {
-        cout << *it << endl;
-    }
-    cout << endl;
+//    NGramGraph<string> g;
+//    g.divider.setPayload(TEXT_PAYLOAD);
+//    g.divider.splitPayloadToAtoms();
+//    cout << g.divider.toString() << endl;
+//    cout << g.divider.getPayload() << endl;
+//    cout << "Number of atoms: " << g.divider.getAtoms().size() << endl;
+//    vector<string> gDAtomsStrings = g.divider.atomsToString();
+//    for (vector<string>::iterator it = gDAtomsStrings.begin() ; it != gDAtomsStrings.end() ; ++it)
+//    {
+//        cout << *it << endl;
+//    }
+//    cout << endl;
 
     GraphSimilarity gs(0.1, 0.4, 0.2);
     cout << endl << "Overall Similarity: " << gs.getOverallSimilarity() << endl;
