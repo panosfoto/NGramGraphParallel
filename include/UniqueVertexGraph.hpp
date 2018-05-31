@@ -63,6 +63,7 @@ class UniqueVertexGraph
 
         /** Adds a new edge to the graph, directed from vHead to vTail.
          * If an edge connecting the same Atoms already exists, it doesn't add a new one, but instead updates the weight of the edge.
+         * If any vertex is missing, it will be added to the graph before the insertion of the edge.
          * \param vHead The vertex descriptor of the Atom that is the head of the edge that will be added to the graph.
          * \param vTail The vertex descriptor of the Atom that is the tail of the edge that will be added to the graph.
          * \param edgeWeight The weight of the edge that will be added/updated to the graph.
@@ -74,6 +75,7 @@ class UniqueVertexGraph
         // TODO : Add Exception documentation
         /** Adds a new edge to the graph, directed from aHead to aTail.
          * If an edge connecting the same Atoms already exists, it doesn't add a new one, but instead updates the weight of the edge.
+         * If any vertex is missing, it will be added to the graph before the insertion of the edge.
          * \param aHead The Atom that is the head of the edge that will be added to the graph.
          * \param aTail The Atom that is the tail of the edge that will be added to the graph.
          * \param edgeWeight The weight of the edge that will be added/updated to the graph.

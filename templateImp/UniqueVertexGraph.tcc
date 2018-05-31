@@ -79,21 +79,11 @@ template <typename AtomType>
 void UniqueVertexGraph<AtomType>::addEdge(Atom<AtomType> aHead, Atom<AtomType> aTail, EDGE_WEIGHT_TYPE edgeWeight)
 {
     typename Graph::vertex_descriptor vHead, vTail;
-    typename std::unordered_map<Atom<AtomType>, Graph::vertex_descriptor>::const_iterator umIt;
 
-    // locate the vertices
-    umIt = UniqueVertices.find(aHead);
-    if (umIt == UniqueVertices.end())
-    {
-        // add new vertex or throw Exception
-    }
-    vHead = umIt->second;
-    umIt = UniqueVertices.find(aTail);
-    if (umIt == UniqueVertices.end())
-    {
-        // add new vertex or throw Exception
-    }
-    vTail = umIt->second;
+    // Locate the vertices
+    // Since addVertex() will check if the vertex already exists, a simple call will return the descriptor to the (either new or found) vertex we want.
+    vHead = addVertex(aHead);
+    vTail = addVertex(aTail);
 
     // vertices located, search if edge already exists
     std::pair<Graph::edge_descriptor, bool> edge = boost::edge(vHead, vTail, graph);
