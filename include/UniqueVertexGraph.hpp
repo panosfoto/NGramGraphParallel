@@ -43,12 +43,21 @@ class UniqueVertexGraph
 
 
 
-        // TODO : Add Exception documentation
-        /** Adds a new vertex to the graph. If a vertex holding the same Atom already exists, it doesn't add a new one, but instead throws an Exception.
+//        // DEPRECATED: THE OTHER addVertex() FUNCTION SHOULD BE USED.
+//        /** Adds a new vertex to the graph. If a vertex holding the same Atom already exists, it doesn't add a new one, but instead throws an Exception.
+//         * \param aAtom The Atom that will be added to the graph.
+//         * \throws TryingToAddExistingVertexException
+//         */
+//        void addVertex(Atom<AtomType> aAtom);
+
+
+
+        /** Adds a new vertex to the graph, and returns its vertex descriptor.
+         * If a vertex holding the same Atom already exists, it doesn't add a new one, but instead returns the vertex descriptor of the vertex that holds the Atom.
          * \param aAtom The Atom that will be added to the graph.
-         * \throws TryingToAddExistingVertexException
+         * \return The vertex descriptor of the (newly added or found) vertex that holds the aAtom Atom.
          */
-        void addVertex(Atom<AtomType> aAtom);
+        typename Graph::vertex_descriptor addVertex(Atom<AtomType> aAtom);
 
 
 
@@ -75,6 +84,7 @@ class UniqueVertexGraph
 
         /** Checks whether a given vertex exists in this graph.
          * \param aAtom The Atom that we are searching for in the graph.
+         * \return True if the Atom exists in the graph, otherwise false.
          */
         bool contains(Atom<AtomType> aAtom);
 

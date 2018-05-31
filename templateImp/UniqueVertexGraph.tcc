@@ -23,13 +23,24 @@ UniqueVertexGraph<AtomType>::~UniqueVertexGraph()
 
 
 
+    // DEPRECATED
+//template <typename AtomType>
+//void UniqueVertexGraph<AtomType>::addVertex(Atom<AtomType> aAtom)
+//{
+//    if (UniqueVertices.find(aAtom) == UniqueVertices.end())
+//        UniqueVertices[aAtom] = graph.add_vertex();
+////    else  // vertex already exists, so throw exception
+////        // throw Exception
+//}
+
+
+
 template <typename AtomType>
-void UniqueVertexGraph<AtomType>::addVertex(Atom<AtomType> aAtom)
+typename Graph::vertex_descriptor UniqueVertexGraph<AtomType>::addVertex(Atom<AtomType> aAtom)
 {
     if (UniqueVertices.find(aAtom) == UniqueVertices.end())
         UniqueVertices[aAtom] = graph.add_vertex();
-//    else  // vertex already exists, so throw exception
-//        // throw Exception
+    return UniqueVertices[aAtom];
 }
 
 
