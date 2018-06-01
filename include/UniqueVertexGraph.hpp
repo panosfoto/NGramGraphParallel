@@ -61,6 +61,30 @@ class UniqueVertexGraph
 
 
 
+        /** Removes a vertex from the graph, based on the Atom it's holding.
+//         * Also removes all the edges it's connected to.
+         * \param aAtom The Atom of the vertex that will be removed from the graph.
+         */
+        void removeVertex(Atom<AtomType> aAtom);
+
+
+
+        /** Removes a vertex from the graph, based on its vertex descriptor.
+         * Also removes all the edges it's connected to.
+         * \param vVertex The vertex descriptor of the vertex that will be removed from the graph.
+         */
+        void removeVertex(typename Graph::vertex_descriptor vVertex);
+
+
+
+        /** Checks whether a given vertex exists in this graph.
+         * \param aAtom The Atom that we are searching for in the graph.
+         * \return True if the Atom exists in the graph, otherwise false.
+         */
+        bool contains(Atom<AtomType> aAtom);
+
+
+
         /** Adds a new edge to the graph, directed from vHead to vTail.
          * If an edge connecting the same Atoms already exists, it doesn't add a new one, but instead updates the weight of the edge.
          * If any vertex is missing, it will be added to the graph before the insertion of the edge.
@@ -72,7 +96,6 @@ class UniqueVertexGraph
 
 
 
-        // TODO : Add Exception documentation
         /** Adds a new edge to the graph, directed from aHead to aTail.
          * If an edge connecting the same Atoms already exists, it doesn't add a new one, but instead updates the weight of the edge.
          * If any vertex is missing, it will be added to the graph before the insertion of the edge.
@@ -81,14 +104,6 @@ class UniqueVertexGraph
          * \param edgeWeight The weight of the edge that will be added/updated to the graph.
          */
         void addEdge(Atom<AtomType> aHead, Atom<AtomType> aTail, EDGE_WEIGHT_TYPE edgeWeight);
-
-
-
-        /** Checks whether a given vertex exists in this graph.
-         * \param aAtom The Atom that we are searching for in the graph.
-         * \return True if the Atom exists in the graph, otherwise false.
-         */
-        bool contains(Atom<AtomType> aAtom);
 
 
 
