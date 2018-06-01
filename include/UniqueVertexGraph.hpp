@@ -19,8 +19,6 @@
 
 // typedefs
 typedef boost::property<boost::edge_weight_t, EDGE_WEIGHT_TYPE> EdgeWeightProperty;
-typedef boost::directed_graph<boost::no_property, EdgeWeightProperty> Graph;
-typedef boost::property_map<Graph, boost::edge_weight_t>::type EdgeWeightMap;
 
 
 /**
@@ -31,6 +29,13 @@ template <typename AtomType>
 class UniqueVertexGraph
 {
     public:
+
+        // graph and property map typedefs for readabilitiness
+        typedef boost::directed_graph<Atom<AtomType>, EdgeWeightProperty> Graph;
+        typedef typename boost::property_map<Graph, boost::edge_weight_t>::type EdgeWeightMap;
+
+
+
         /**
          * Constructor for the UniqueVertexGraph class.
          */
@@ -120,7 +125,7 @@ class UniqueVertexGraph
         /**
          * \var UniqueVertices A hashtable containing pairs <Atom, Vertex> used to uniquely identify each vertex.
          */
-        std::unordered_map<Atom<AtomType>, Graph::vertex_descriptor> UniqueVertices;
+        std::unordered_map<Atom<AtomType>, typename Graph::vertex_descriptor> UniqueVertices;
 
 
 

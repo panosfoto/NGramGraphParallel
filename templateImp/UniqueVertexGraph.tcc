@@ -36,10 +36,12 @@ UniqueVertexGraph<AtomType>::~UniqueVertexGraph()
 
 
 template <typename AtomType>
-typename Graph::vertex_descriptor UniqueVertexGraph<AtomType>::addVertex(Atom<AtomType> aAtom)
+typename boost::directed_graph<Atom<AtomType>, EdgeWeightProperty>::vertex_descriptor UniqueVertexGraph<AtomType>::addVertex(Atom<AtomType> aAtom)
 {
     if (UniqueVertices.find(aAtom) == UniqueVertices.end())
-        UniqueVertices[aAtom] = graph.add_vertex();
+    {
+        UniqueVertices[aAtom] = graph.add_vertex(aAtom);
+    }
     return UniqueVertices[aAtom];
 }
 
@@ -63,6 +65,7 @@ void UniqueVertexGraph<AtomType>::removeVertex(Atom<AtomType> aAtom)
 template <typename AtomType>
 void UniqueVertexGraph<AtomType>::removeVertex(typename Graph::vertex_descriptor vVertex)
 {
+    UniqueVertices.erase(graph[vVertex]);
     graph.remove_vertex(vVertex);
 }
 
@@ -71,7 +74,7 @@ void UniqueVertexGraph<AtomType>::removeVertex(typename Graph::vertex_descriptor
 template <typename AtomType>
 bool UniqueVertexGraph<AtomType>::contains(Atom<AtomType> aAtom)
 {
-    typename std::unordered_map<Atom<AtomType>, Graph::vertex_descriptor>::const_iterator umIt;
+    typename std::unordered_map<Atom<AtomType>, typename Graph::vertex_descriptor>::const_iterator umIt;
     umIt = UniqueVertices.find(aAtom);
     if (umIt == UniqueVertices.end())
         return false;
@@ -83,7 +86,7 @@ bool UniqueVertexGraph<AtomType>::contains(Atom<AtomType> aAtom)
 template <typename AtomType>
 void UniqueVertexGraph<AtomType>::addEdge(typename Graph::vertex_descriptor vHead, typename Graph::vertex_descriptor vTail, EDGE_WEIGHT_TYPE edgeWeight)
 {
-    std::pair<Graph::edge_descriptor, bool> edge = boost::edge(vHead, vTail, graph);
+    std::pair<typename Graph::edge_descriptor, bool> edge = boost::edge(vHead, vTail, graph);
     //check if edge exists
     if (edge.second == false) // edge doesn't exist, so add it
     {
@@ -109,7 +112,7 @@ void UniqueVertexGraph<AtomType>::addEdge(Atom<AtomType> aHead, Atom<AtomType> a
     vTail = addVertex(aTail);
 
     // vertices located, search if edge already exists
-    std::pair<Graph::edge_descriptor, bool> edge = boost::edge(vHead, vTail, graph);
+    std::pair<typename Graph::edge_descriptor, bool> edge = boost::edge(vHead, vTail, graph);
     //check if edge exists
 //    std::cout << "Exists: " << edge.second << std::endl;    // DEBUG
     if (edge.second == false) // edge doesn't exist, so add it
