@@ -30,7 +30,7 @@ NGramGraph::~NGramGraph()
 
 unsigned int NGramGraph::getPayloadSize()
 {
-    return divider.getPayloadSize();
+    return divider.getPayload().length();
 }
 
 
@@ -43,8 +43,8 @@ void NGramGraph::createGraph()
     typename std::unordered_map<Atom<std::string>, Graph::vertex_descriptor>::const_iterator uniqueVerticesIterator;
 
     // split payload to get the n-grams (atoms)
-    divider.splitPayloadToAtoms();
-    atoms = divider.getAtoms();
+    atoms = divider.splitPayloadToAtoms();
+//    atoms = divider.getAtoms();
     // add the atoms to the graph
     for(typename vector<Atom<std::string>>::iterator itCurrentAtom = atoms.begin() ; itCurrentAtom != atoms.end() ; ++itCurrentAtom)
     {

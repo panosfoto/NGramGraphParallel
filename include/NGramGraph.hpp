@@ -7,7 +7,7 @@
 
 // project headers
 #include "ProximityGraph.hpp"
-#include "StringToCharDivider.hpp"
+#include "StringSplitter.hpp"
 
 // defines
 #define NGRAMSIZE_DEFAULT_VALUE 3
@@ -95,7 +95,7 @@ class NGramGraph : public ProximityGraph<std::string>
          * \var divider The data that the graph holds and splits to Atoms (n-grams) to create the graph(s).
          *
          */
-        StringToCharDivider divider;
+        StringSplitter divider;
 
 
 

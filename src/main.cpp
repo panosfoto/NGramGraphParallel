@@ -5,9 +5,10 @@
 #include <iostream>
 #include "Atom.hpp"
 #include "GraphSimilarity.hpp"
-#include "StringToCharDivider.hpp"
 #include "NGramGraph.hpp"
 #include "UniqueVertexGraph.hpp"
+#include "StringAtom.hpp"
+#include "StringSplitter.hpp"
 
 //#define TEXT_PAYLOAD "Betty Butters bought some bitter butter, but the butter was too bitter, so she bought a better butter to make the bitter butter better."
 #define TEXT_PAYLOAD "Hope..."
@@ -15,37 +16,41 @@
 using namespace std;
 
 int main(){
+    StringSplitter ss;
+    cout << ss.getAtomSize() << endl;
     Atom<int> iAtom(42);
     cout << iAtom.toString() << endl;
     cout << iAtom.getPayload() << endl << endl;
 
-    StringToCharDivider sCD;
-    sCD.setPayload("Hello");
-    sCD.splitPayloadToAtoms();
-    cout << sCD.toString() << endl;
-    cout << sCD.getPayload() << endl;
-    cout << "Number of atoms: " << sCD.getAtoms().size() << endl;
-    vector<string> sCDAtomsStrings = sCD.atomsToString();
-    for (vector<string>::iterator it = sCDAtomsStrings.begin() ; it != sCDAtomsStrings.end() ; ++it)
-    {
-        cout << *it << endl;
-    }
-    cout << endl;
+//    StringToCharDivider sCD;
+//    sCD.setPayload("Hello");
+//    sCD.splitPayloadToAtoms();
+//    cout << sCD.toString() << endl;
+//    cout << sCD.getPayload() << endl;
+//    cout << "Number of atoms: " << sCD.getAtoms().size() << endl;
+//    vector<string> sCDAtomsStrings = sCD.atomsToString();
+//    for (vector<string>::iterator it = sCDAtomsStrings.begin() ; it != sCDAtomsStrings.end() ; ++it)
+//    {
+//        cout << *it << endl;
+//    }
+//    cout << endl;
 //    DivisibleObject<int> iDO(5);
 //    iDO.splitPayloadToAtoms(2);
 
-    Atom<string> a1("a1"), a2("a2"), a3("a3");
+    StringAtom a1("a1"), a2("a2"), a3("a3");
     UniqueVertexGraph<string> uvg;
     uvg.addVertex(a1);
     uvg.addVertex(a2);
+    uvg.addVertex(a3);
+    uvg.removeVertex(a3);
     uvg.addEdge(a1, a2, 1.43);
     uvg.addEdge(a1, a2, 2.43);
     cout << uvg.contains(a1) << " " << uvg.contains(a2) << " " << uvg.contains(a3) << endl;
     cout << endl;
 
     NGramGraph ngg(1, 3);
-    cout << "Correlation window: " << ngg.getCorrelationWindow() << ", nGram size: " << ngg.getNGramSize() << ", payload size: " << ngg.getPayloadSize() << endl;
     ngg.setPayload("Hello");
+    cout << "Correlation window: " << ngg.getCorrelationWindow() << ", nGram size: " << ngg.getNGramSize() << ", payload size: " << ngg.getPayloadSize() << endl;
     ngg.createGraph();
 
 //    NGramGraph<string> g;
