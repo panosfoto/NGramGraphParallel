@@ -2,7 +2,6 @@
  * \file UniqueVertexGraph.tcc
  */
 
-#include "UniqueVertexGraph.hpp"
 #include <iostream>
 
 

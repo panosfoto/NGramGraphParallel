@@ -2,7 +2,6 @@
  * \file ProximityGraph.tcc
  */
 
-#include "ProximityGraph.hpp"
 
 template <typename AtomType>
 ProximityGraph<AtomType>::ProximityGraph()
