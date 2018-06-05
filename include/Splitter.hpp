@@ -44,14 +44,14 @@ class Splitter
 
 
         /** Mutator for atomSize variable.
-         * \param setValue The new atom size that the StringToCharDivider will split its payload to.
+         * \param setValue The new atom size that the Splitter will split its payload to.
          */
         void setAtomSize(unsigned int newAtomSizeValue){ this->atomSize = newAtomSizeValue; }
 
 
 
         /** Accessor for atomSize variable.
-         * \return Current atom size that the StringToCharDivider will split its payload to.
+         * \return Current atom size that the Splitter will split its payload to.
          */
         unsigned int getAtomSize(){ return atomSize; }
 
