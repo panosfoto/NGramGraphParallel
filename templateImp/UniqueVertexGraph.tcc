@@ -55,8 +55,7 @@ void UniqueVertexGraph<AtomType>::removeVertex(Atom<AtomType> aAtom)
     // Reminder: UniqueVertices.find(aAtom) returns an iterator to unordered_map, meaning that it has two fields:
     // -> "first", the key of the map (Atom<AtomType> in this case).
     // -> "second", the value of the map (vertex_descriptor in this case).
-    graph.remove_vertex(UniqueVertices.find(aAtom)->second);
-    UniqueVertices.erase(aAtom);
+    this->removeVertex(aAtom, UniqueVertices.find(aAtom)->second);
 }
 
 
@@ -64,7 +63,16 @@ void UniqueVertexGraph<AtomType>::removeVertex(Atom<AtomType> aAtom)
 template <typename AtomType>
 void UniqueVertexGraph<AtomType>::removeVertex(typename Graph(AtomType)::vertex_descriptor vVertex)
 {
-    UniqueVertices.erase(graph[vVertex]);
+    this->removeVertex(graph[vVertex], vVertex);
+}
+
+
+
+template <typename AtomType>
+void UniqueVertexGraph<AtomType>::removeVertex(Atom<AtomType> aAtom, typename Graph(AtomType)::vertex_descriptor vVertex)
+{
+    // TODO : remove all vertex's edges
+    UniqueVertices.erase(aAtom);
     graph.remove_vertex(vVertex);
 }
 

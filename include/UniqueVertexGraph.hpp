@@ -135,6 +135,16 @@ class UniqueVertexGraph
          * \var edgeWeightMap A (boost::property_map) map used to retrieve the weight of the edges.
          */
         EdgeWeightMap edgeWeightMap;
+
+
+
+        /** Removes a vertex from the graph. Also removes all the edges it's connected to. \n
+         * This is the function that actually removes vertices. The other 2 public functions are wrappers for this one. \n
+         * Takes both types that a vertex can be identified with, to avoid extra function calls.
+         * \param aAtom The Atom of the vertex that will be removed from the graph.
+         * \param vVertex The vertex descriptor of the vertex that will be removed from the graph.
+         */
+        void removeVertex(Atom<AtomType> aAtom, typename Graph(AtomType)::vertex_descriptor vVertex);
 };
 
 
