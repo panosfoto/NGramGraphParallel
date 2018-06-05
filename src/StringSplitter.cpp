@@ -13,6 +13,12 @@ StringSplitter::StringSplitter()
 }
 
 
+StringSplitter::StringSplitter(unsigned int atomSizeValue) : Splitter(atomSizeValue)
+{
+    //ctor
+}
+
+
 
 vector<Atom<std::string>> StringSplitter::splitPayloadToAtoms()
 {

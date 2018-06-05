@@ -18,8 +18,18 @@
 class StringSplitter : public Splitter<std::string>
 {
     public:
-        /** Default constructor */
+        /**
+         * Default constructor. atomSize set to ATOMSIZE_DEFAULT_VALUE.
+         */
         StringSplitter();
+
+
+
+        /**
+         * Constructor that initializes atomSize.
+         * \param atomSizeValue The new value for the atomSize variable.
+         */
+        StringSplitter(unsigned int atomSizeValue);
 
 
 
