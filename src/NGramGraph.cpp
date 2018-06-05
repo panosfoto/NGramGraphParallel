@@ -38,9 +38,9 @@ unsigned int NGramGraph::getPayloadSize()
 void NGramGraph::createGraph()
 {
     vector<Atom<std::string>> atoms;
-    typename Graph::vertex_descriptor currentVertex;
-    vector<typename Graph::vertex_descriptor> preceding_atoms;
-    typename std::unordered_map<Atom<std::string>, Graph::vertex_descriptor>::const_iterator uniqueVerticesIterator;
+    typename Graph(std::string)::vertex_descriptor currentVertex;
+    vector<typename Graph(std::string)::vertex_descriptor> preceding_atoms;
+    typename std::unordered_map<Atom<std::string>, Graph(std::string)::vertex_descriptor>::const_iterator uniqueVerticesIterator;
 
     // split payload to get the n-grams (atoms)
     atoms = divider.splitPayloadToAtoms();
@@ -74,9 +74,9 @@ void NGramGraph::createGraph()
 
 
 
-void NGramGraph::createEdgesToNeighbors(Graph::vertex_descriptor vHead, vector<typename Graph::vertex_descriptor> neighbors)
+void NGramGraph::createEdgesToNeighbors(Graph(std::string)::vertex_descriptor vHead, vector<typename Graph(std::string)::vertex_descriptor> neighbors)
 {
-    for(typename vector<typename Graph::vertex_descriptor>::iterator itCurrentVertex = neighbors.begin() ; itCurrentVertex != neighbors.end() ; ++itCurrentVertex)
+    for(typename vector<typename Graph(std::string)::vertex_descriptor>::iterator itCurrentVertex = neighbors.begin() ; itCurrentVertex != neighbors.end() ; ++itCurrentVertex)
     {
         addEdge(vHead, *itCurrentVertex, EDGE_WEIGHT_DEFAULT_VALUE);
     }

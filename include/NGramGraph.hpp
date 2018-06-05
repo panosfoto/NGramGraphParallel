@@ -103,7 +103,7 @@ class NGramGraph : public ProximityGraph<std::string>
          * \param vHead The vertex from which the edges begin.
          * \param neighbors A vector containing the vertices who will be the tails of the edges.
          */
-        void createEdgesToNeighbors(Graph::vertex_descriptor vHead, vector<typename Graph::vertex_descriptor> neighbors);
+        void createEdgesToNeighbors(Graph(std::string)::vertex_descriptor vHead, vector<typename Graph(std::string)::vertex_descriptor> neighbors);
 
 
 

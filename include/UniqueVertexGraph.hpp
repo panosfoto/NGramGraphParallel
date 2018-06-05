@@ -7,6 +7,7 @@
 
 // system headers
 #include <boost/graph/directed_graph.hpp>
+#include <boost/graph/graphviz.hpp>
 #include <unordered_map>
 
 // project headers
@@ -15,6 +16,7 @@
 
 // defines
 #define EDGE_WEIGHT_TYPE double
+#define Graph(AtomType) boost::directed_graph<Atom<AtomType>,EdgeWeightProperty>
 
 
 // typedefs
@@ -28,11 +30,11 @@ typedef boost::property<boost::edge_weight_t, EDGE_WEIGHT_TYPE> EdgeWeightProper
 template <typename AtomType>
 class UniqueVertexGraph
 {
+
     public:
 
         // graph and property map typedefs for readabilitiness
-        typedef boost::directed_graph<Atom<AtomType>, EdgeWeightProperty> Graph;
-        typedef typename boost::property_map<Graph, boost::edge_weight_t>::type EdgeWeightMap;
+        typedef typename boost::property_map<Graph(AtomType), boost::edge_weight_t>::type EdgeWeightMap;
 
 
 
@@ -62,7 +64,7 @@ class UniqueVertexGraph
          * \param aAtom The Atom that will be added to the graph.
          * \return The vertex descriptor of the (newly added or found) vertex that holds the aAtom Atom.
          */
-        typename Graph::vertex_descriptor addVertex(Atom<AtomType> aAtom);
+        typename Graph(AtomType)::vertex_descriptor addVertex(Atom<AtomType> aAtom);
 
 
 
@@ -78,7 +80,7 @@ class UniqueVertexGraph
          * Also removes all the edges it's connected to.
          * \param vVertex The vertex descriptor of the vertex that will be removed from the graph.
          */
-        void removeVertex(typename Graph::vertex_descriptor vVertex);
+        void removeVertex(typename Graph(AtomType)::vertex_descriptor vVertex);
 
 
 
@@ -97,7 +99,7 @@ class UniqueVertexGraph
          * \param vTail The vertex descriptor of the Atom that is the tail of the edge that will be added to the graph.
          * \param edgeWeight The weight of the edge that will be added/updated to the graph.
          */
-        void addEdge(typename Graph::vertex_descriptor vHead, typename Graph::vertex_descriptor vTail, EDGE_WEIGHT_TYPE edgeWeight);
+        void addEdge(typename Graph(AtomType)::vertex_descriptor vHead, typename Graph(AtomType)::vertex_descriptor vTail, EDGE_WEIGHT_TYPE edgeWeight);
 
 
 
@@ -118,14 +120,14 @@ class UniqueVertexGraph
          * \var graph The graph of the UniqueVertexGraph.
          * Implemented with Boost Graph Library as a directed graph with weighted edges.
          */
-        Graph graph;
+        Graph(AtomType) graph;
 
 
 
         /**
          * \var UniqueVertices A hashtable containing pairs <Atom, Vertex> used to uniquely identify each vertex.
          */
-        std::unordered_map<Atom<AtomType>, typename Graph::vertex_descriptor> UniqueVertices;
+        std::unordered_map<Atom<AtomType>, typename Graph(AtomType)::vertex_descriptor> UniqueVertices;
 
 
 
