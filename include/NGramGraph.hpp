@@ -18,10 +18,8 @@
 /**
  * \Class A class that represents a N-gram graph.
  *
- * A N-gram graph is an entity that holds a Divider entity and a graph.
- * The StringToCharDivider splits the data it holds into N-gram Atoms,
- * and with those N-grams the N-gram graph creates the graph.
- * The graph's vertices are the Atoms, and the edges indicate neighboring Atoms (according to the CorrelationWindow).
+ * A N-gram graph is a ProximityGraph for strings that are split into N-grams.
+ * The graph's Atoms are N-grams, and they are connected iff they are close enough (according to the CorrelationWindow) inside the string.
  */
 class NGramGraph : public ProximityGraph<std::string>
 {
@@ -38,22 +36,12 @@ class NGramGraph : public ProximityGraph<std::string>
          *  \param CorrelationWindowValue The new value for the CorrelationWindow variable.
          *  \param NGramSizeValue The new value for the NGramSize variable.
          */
-        NGramGraph(unsigned int CorrelationWindowValue, unsigned int NGramSizeValue);
+        NGramGraph(unsigned int CorrelationWindowValue, Splitter<std::string> *newSplitter, ProximityEvaluator<std::string> *newProximityEvaluator);
 
 
 
         /** Default destructor */
         virtual ~NGramGraph();
-
-
-
-        /**
-         * Returns the size of the payload, according to the payload type and divider type.\n
-         * For example, if the payload is a string (e.g. a text) and the divider splits it to character n-grams, this function will return the length of the string.
-         * If the divider splits the string to word n-grams, the return value will be the number of words in the text.
-         * \return The size of the payload.
-         */
-        unsigned int getPayloadSize();
 
 
 
@@ -67,19 +55,6 @@ class NGramGraph : public ProximityGraph<std::string>
          * \param newPayload The new value for the payload variable.
          */
         void setPayload(std::string newPayload) { splitter->setPayload(newPayload); }
-
-
-
-        /** Accessor for NGramSize variable.
-         */
-        unsigned int getNGramSize() { return splitter->getAtomSize(); }
-
-
-
-        /** Mutator for NGramSize variable.
-         * \param newNGramSize The new value for the NGramSize variable.
-         */
-        void setNGramSize(unsigned int newNGramSize) { splitter->setAtomSize(newNGramSize); }
 
 
 

@@ -9,16 +9,18 @@
 
 NGramGraph::NGramGraph()
 {
-//    splitter->setAtomSize(NGRAMSIZE_DEFAULT_VALUE);
     CorrelationWindow = CORRELATIONWINDOW_DEFAULT_VALUE;
+    splitter = nullptr;
+    evaluator = nullptr;
 }
 
 
 
-NGramGraph::NGramGraph(unsigned int CorrelationWindowValue, unsigned int NGramSizeValue)
+NGramGraph::NGramGraph(unsigned int CorrelationWindowValue, Splitter<std::string> *newSplitter, ProximityEvaluator<std::string> *newProximityEvaluator)
 {
-//    splitter->setAtomSize(NGramSizeValue);
     CorrelationWindow = CorrelationWindowValue;
+    splitter = newSplitter;
+    evaluator = newProximityEvaluator;
 }
 
 
@@ -26,13 +28,6 @@ NGramGraph::NGramGraph(unsigned int CorrelationWindowValue, unsigned int NGramSi
 NGramGraph::~NGramGraph()
 {
     //dtor
-}
-
-
-
-unsigned int NGramGraph::getPayloadSize()
-{
-    return splitter->getPayload().length();
 }
 
 
