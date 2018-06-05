@@ -9,14 +9,16 @@
 
 NGramGraph::NGramGraph()
 {
-    divider.setAtomSize(NGRAMSIZE_DEFAULT_VALUE);
+//    splitter->setAtomSize(NGRAMSIZE_DEFAULT_VALUE);
+    CorrelationWindow = CORRELATIONWINDOW_DEFAULT_VALUE;
 }
 
 
 
-NGramGraph::NGramGraph(unsigned int CorrelationWindowValue, unsigned int NGramSizeValue) : ProximityGraph(CorrelationWindowValue)
+NGramGraph::NGramGraph(unsigned int CorrelationWindowValue, unsigned int NGramSizeValue)
 {
-    divider.setAtomSize(NGramSizeValue);
+//    splitter->setAtomSize(NGramSizeValue);
+    CorrelationWindow = CorrelationWindowValue;
 }
 
 
@@ -30,7 +32,7 @@ NGramGraph::~NGramGraph()
 
 unsigned int NGramGraph::getPayloadSize()
 {
-    return divider.getPayload().length();
+    return splitter->getPayload().length();
 }
 
 
@@ -43,8 +45,7 @@ void NGramGraph::createGraph()
     typename std::unordered_map<Atom<std::string>, Graph(std::string)::vertex_descriptor>::const_iterator uniqueVerticesIterator;
 
     // split payload to get the n-grams (atoms)
-    atoms = divider.splitPayloadToAtoms();
-//    atoms = divider.getAtoms();
+    atoms = splitter->splitPayloadToAtoms();
     // add the atoms to the graph
     for(typename vector<Atom<std::string>>::iterator itCurrentAtom = atoms.begin() ; itCurrentAtom != atoms.end() ; ++itCurrentAtom)
     {

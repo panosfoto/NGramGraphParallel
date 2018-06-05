@@ -7,30 +7,22 @@
 
 // project headers
 #include "UniqueVertexGraph.hpp"
+#include "ProximityEvaluator.hpp"
+#include "Splitter.hpp"
 
-
-// defines
-#define CORRELATIONWINDOW_DEFAULT_VALUE 3
 
 
 /**
- * \Class An abstract class that represents a weighted proximity graph with unique vertices.
- * A ProximityGraph needs a proximity measure and a “whole” item that can be broken down into Atoms.
- * For a given correlation window it can examine all the vertex pairs and connect the appropriate ones with a weighted edge.
+ * \Class A class that represents a weighted proximity graph with unique vertices.
+ * A ProximityGraph needs a ProximityEvaluator, a Splitter and a payload, “whole” item that can be broken down into Atoms, which will be the vertices of the graph.
+ * It uses the Splitter to split the payload into Atoms, and then uses the ProximityEvaluator to identify which Atoms should be connected.
  */
 template <typename AtomType>
 class ProximityGraph : public UniqueVertexGraph<AtomType>
 {
     public:
-        /** Default constructor. CorrelationWindow is set to CORRELATIONWINDOW_DEFAULT_VALUE. */
+        /** Default constructor. */
         ProximityGraph();
-
-
-
-        /** Constructor that initializes the CorrelationWindow variable
-         * \param CorrelationWindowValue The new value for the CorrelationWindow variable.
-         */
-        ProximityGraph(unsigned int CorrelationWindowValue);
 
 
 
@@ -39,27 +31,17 @@ class ProximityGraph : public UniqueVertexGraph<AtomType>
 
 
 
-        /** Accessor for CorrelationWindow variable.
-         * \return The current value of the CorrelationWindow variable.
+        /** Mutator for evaluator variable.
+         * \param newEvaluator The new ProximityEvaluator for the ProximityGraph.
          */
-        unsigned int getCorrelationWindow() { return CorrelationWindow; }
+        void setProximityEvaluator(ProximityEvaluator<AtomType> *newEvaluator) { evaluator = newEvaluator; }
 
 
 
-        /** Mutator for CorrelationWindow variable.
-         * \param CorrelationWindowValue The new value for the CorrelationWindow variable.
+        /** Mutator for splitter variable.
+         * \param newSplitter The new splitter for the ProximityGraph.
          */
-        void setCorrelationWindow(unsigned int CorrelationWindowValue) { CorrelationWindow = CorrelationWindowValue; }
-
-
-
-        /**
-         * Returns the size of the payload, according to the payload type and divider type.\n
-         * For example, if the payload is a string (e.g. a text) and the divider splits it to character n-grams, this function will return the length of the string.
-         * If the divider splits the string to word n-grams, the return value will be the number of words in the text.
-         * \return The size of the payload.
-         */
-        virtual unsigned int getPayloadSize() = 0;
+        void setSplitter(Splitter<AtomType> *newSplitter) { splitter = newSplitter; }
 
 
 
@@ -73,10 +55,18 @@ class ProximityGraph : public UniqueVertexGraph<AtomType>
     protected:
 
         /**
-         * \var CorrelationWindow The maximum distance of terms to be considered as correlated. Default is 3.
+         * \var evaluator The proximity evaluator that will be used in createGraphs to evaluate which Atoms will be connected.
          *
          */
-        unsigned int CorrelationWindow;
+        ProximityEvaluator<AtomType> *evaluator;
+
+
+
+        /**
+         * \var splitter The splitter that will be used to break the payload into Atoms.
+         *
+         */
+        Splitter<AtomType> *splitter;
 };
 
 

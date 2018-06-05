@@ -57,6 +57,20 @@ class Splitter
 
 
 
+        /** Mutator for payload variable.
+         * \param newPayload The new payload that the Splitter will hold.
+         */
+        virtual void setPayload(std::string newPayload)=0;
+
+
+
+        /** Accessor for payload variable.
+         * \return Current payload.
+         */
+        virtual std::string getPayload()=0;
+
+
+
         /**
          * Provide a readable representation (string) of the data (payload) that the Splitter holds.
          * \return A string representing the Splitter's payload.

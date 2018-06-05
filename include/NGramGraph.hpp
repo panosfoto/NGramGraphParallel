@@ -12,6 +12,7 @@
 // defines
 #define NGRAMSIZE_DEFAULT_VALUE 3
 #define EDGE_WEIGHT_DEFAULT_VALUE 1.0
+#define CORRELATIONWINDOW_DEFAULT_VALUE 3
 
 
 /**
@@ -58,27 +59,41 @@ class NGramGraph : public ProximityGraph<std::string>
 
         /** Accessor for payload variable.
          */
-        std::string getPayload() { return divider.getPayload(); }
+        std::string getPayload() { return splitter->getPayload(); }
 
 
 
         /** Mutator for payload variable.
          * \param newPayload The new value for the payload variable.
          */
-        void setPayload(std::string newPayload) { divider.setPayload(newPayload); }
+        void setPayload(std::string newPayload) { splitter->setPayload(newPayload); }
 
 
 
         /** Accessor for NGramSize variable.
          */
-        unsigned int getNGramSize() { return divider.getAtomSize(); }
+        unsigned int getNGramSize() { return splitter->getAtomSize(); }
 
 
 
         /** Mutator for NGramSize variable.
          * \param newNGramSize The new value for the NGramSize variable.
          */
-        void setNGramSize(unsigned int newNGramSize) { divider.setAtomSize(newNGramSize); }
+        void setNGramSize(unsigned int newNGramSize) { splitter->setAtomSize(newNGramSize); }
+
+
+
+        /** Accessor for CorrelationWindow variable.
+         * \return The current value of the CorrelationWindow variable.
+         */
+        unsigned int getCorrelationWindow() { return CorrelationWindow; }
+
+
+
+        /** Mutator for CorrelationWindow variable.
+         * \param CorrelationWindowValue The new value for the CorrelationWindow variable.
+         */
+        void setCorrelationWindow(unsigned int CorrelationWindowValue) { CorrelationWindow = CorrelationWindowValue; }
 
 
 
@@ -92,10 +107,10 @@ class NGramGraph : public ProximityGraph<std::string>
     protected:
 
         /**
-         * \var divider The data that the graph holds and splits to Atoms (n-grams) to create the graph(s).
+         * \var CorrelationWindow The maximum distance of terms to be considered as correlated. Default is 3.
          *
          */
-        StringSplitter divider;
+        unsigned int CorrelationWindow;
 
 
 
@@ -107,7 +122,7 @@ class NGramGraph : public ProximityGraph<std::string>
 
 
 
-// DEPRECATED: Using the divider.atomSize variable instead
+// DEPRECATED: Using the splitter->atomSize variable instead
 //        /**
 //         * \var NGramSize The size of the n-grams. Default is 3.
 //         *

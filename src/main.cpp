@@ -48,7 +48,10 @@ int main(){
     cout << uvg.contains(a1) << " " << uvg.contains(a2) << " " << uvg.contains(a3) << endl;
     cout << endl;
 
+    StringSplitter sspl;
+    sspl.setAtomSize(NGRAMSIZE_DEFAULT_VALUE);
     NGramGraph ngg(1, 3);
+    ngg.setSplitter(&sspl);
     ngg.setPayload("Hello");
     cout << "Correlation window: " << ngg.getCorrelationWindow() << ", nGram size: " << ngg.getNGramSize() << ", payload size: " << ngg.getPayloadSize() << endl;
     ngg.createGraph();
