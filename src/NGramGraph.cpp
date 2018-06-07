@@ -37,21 +37,15 @@ void NGramGraph::createGraph()
     vector<Atom<std::string>> atoms;
     typename Graph(std::string)::vertex_descriptor currentVertex;
     vector<typename Graph(std::string)::vertex_descriptor> preceding_atoms;
-    typename std::unordered_map<Atom<std::string>, Graph(std::string)::vertex_descriptor>::const_iterator uniqueVerticesIterator;
 
     // split payload to get the n-grams (atoms)
     atoms = splitter->splitPayloadToAtoms();
+
     // add the atoms to the graph
     for(typename vector<Atom<std::string>>::iterator itCurrentAtom = atoms.begin() ; itCurrentAtom != atoms.end() ; ++itCurrentAtom)
     {
-        // try to locate current vertex (atom) in the graph
-        uniqueVerticesIterator = UniqueVertices.find(*itCurrentAtom);
-        if (uniqueVerticesIterator == UniqueVertices.end())
-            // if it doesn't exist, add it
-            currentVertex = graph.add_vertex();
-        else
-            //if it exists, locate it
-            currentVertex = uniqueVerticesIterator->second;
+        // add or locate current vertex (atom) in the graph
+        currentVertex = addVertex(*itCurrentAtom);
 
         // add edges from current vertex (atom) to its neighbors
         createEdgesToNeighbors(currentVertex, preceding_atoms);
