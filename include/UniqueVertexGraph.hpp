@@ -114,6 +114,21 @@ class UniqueVertexGraph
 
 
 
+        /** Prints the graph in DOT format to the output stream provided. Defaults to \b std::cout.
+         * \param outputStream The output stream that the graph will be printed to.
+         */
+        void printGraphviz(std::ostream& outputStream = std::cout);
+
+
+
+        /** A wrapper for printGraphviz(). Prints the graph in DOT format to the file with the name provided.
+         * \note If the file already exists, <b> its contents are appended to the end of the file</b>.
+         * \param fileName The name of the file that the graph will be printed to.
+         */
+        void printGraphvizToFile(std::string fileName);
+
+
+
     protected:
 
         /**

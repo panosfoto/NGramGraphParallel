@@ -59,7 +59,10 @@ void NGramGraph::createGraph()
     }
     // DEBUG
     std::cout << "Num of vertices: " << boost::num_vertices(graph) << std::endl << "Num of edges: " << boost::num_edges(graph) << std::endl;
+    std::cout << "---------\nBoost print:" << std:: endl;
     boost::print_graph(graph);
+    std::cout << "---------\nGraphviz print:" << std:: endl;
+    printGraphviz();
 }
 
 

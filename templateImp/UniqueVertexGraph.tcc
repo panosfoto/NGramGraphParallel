@@ -135,3 +135,36 @@ void UniqueVertexGraph<AtomType>::addEdge(Atom<AtomType> aHead, Atom<AtomType> a
 //        std::cout << "Exists: " << boost::edge(vHead, vTail, graph).second << " with weight " << boost::get( boost::edge_weight, graph, boost::edge(vHead, vTail, graph).first ) << std::endl;  // DEBUG
     }
 }
+
+
+
+template <typename AtomType>
+void UniqueVertexGraph<AtomType>::printGraphviz(std::ostream& outputStream) // outputStream default value is std::cout
+{
+    boost::dynamic_properties dp;
+
+    // Using the intrinsic vertex index for the graphviz node ids
+    dp.property("node_id", get(boost::vertex_index, graph));
+
+    // Grab the property-map for the whole bundle
+    auto vbundle = get(boost::vertex_bundle, graph);
+
+    // Transform it
+    dp.property("label", boost::make_transform_value_property_map(std::mem_fn(&Atom<std::string>::toString), vbundle));
+
+    // Print graph
+    boost::write_graphviz_dp(outputStream, graph, dp);
+}
+
+
+
+template <typename AtomType>
+void UniqueVertexGraph<AtomType>::printGraphvizToFile(std::string fileName)
+{
+    std::ofstream ofs (fileName,  std::ofstream::out | std::ofstream::app);
+    if (ofs.good())
+        printGraphviz(ofs);
+    else
+        // TODO : throw exception
+        std::cerr << "Error: File stream to output DOT is not in a good state. Graph was not printed." << std::endl;
+}
