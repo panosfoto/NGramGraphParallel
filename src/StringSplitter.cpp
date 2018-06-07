@@ -39,7 +39,6 @@ vector<Atom<std::string>> StringSplitter::splitPayloadToAtoms()
         {
             tempString.push_back(payload[i+j]);
         }
-        tempString.push_back('\0');
         tempAtom = new Atom<std::string>(tempString);
         atoms.push_back(*tempAtom);
         // added so valgrind won't count it as a memory leak
