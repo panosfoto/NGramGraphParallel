@@ -20,9 +20,9 @@ StringSplitter::StringSplitter(unsigned int atomSizeValue) : Splitter(atomSizeVa
 
 
 
-vector<Atom<std::string>> StringSplitter::splitPayloadToAtoms()
+vector<Atom<std::string>> StringSplitter::splitPayloadToAtoms(Payload<std::string> *payloadToSplit)
 {
-    if (atomSize > payload.length())
+    if (atomSize > (*payloadToSplit).getPayload().length())
     {
         // TODO : replace with exception throwing
         cerr << "splitPayloadToAtoms(): Warning: atom size provided is greater than the length of the payload. Payload could not be split." << endl;
@@ -32,12 +32,12 @@ vector<Atom<std::string>> StringSplitter::splitPayloadToAtoms()
     std::string tempString;
     Atom<std::string> *tempAtom;
     //test implementation
-    for(unsigned int i = 0 ; i < payload.length()-atomSize+1 ; ++i)
+    for(unsigned int i = 0 ; i < (*payloadToSplit).getPayload().length()-atomSize+1 ; ++i)
     {
         tempString.clear();
         for(unsigned int j = 0 ; j < atomSize ; ++j)
         {
-            tempString.push_back(payload[i+j]);
+            tempString.push_back((*payloadToSplit).getPayload()[i+j]);
         }
         tempAtom = new Atom<std::string>(tempString);
         atoms.push_back(*tempAtom);

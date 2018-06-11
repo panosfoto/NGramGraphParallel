@@ -11,6 +11,7 @@
 
 // project headers
 #include "Atom.hpp"
+#include "Payload.hpp"
 
 // defines
 #define ATOMSIZE_DEFAULT_VALUE 3
@@ -24,7 +25,7 @@ using namespace std;
  * Usage: Every proximity graph holds a Splitter. The graph can order the Splitter to split its payload into atoms and create a node for every atom created.
  * \note No payload defined variable in this abstract superclass. Sub-classes must define their own payload variable, according to the type they are going to work with.
  */
-template <typename AtomType>
+template <typename PayloadType, typename AtomType>
 class Splitter
 {
     public:
@@ -57,33 +58,11 @@ class Splitter
 
 
 
-        /** Mutator for payload variable.
-         * \param newPayload The new payload that the Splitter will hold.
-         */
-        virtual void setPayload(std::string newPayload)=0;
-
-
-
-        /** Accessor for payload variable.
-         * \return Current payload.
-         */
-        virtual std::string getPayload()=0;
-
-
-
-        /**
-         * Provide a readable representation (string) of the data (payload) that the Splitter holds.
-         * \return A string representing the Splitter's payload.
-         */
-        virtual std::string toString() = 0;
-
-
-
         /**
          * Splits the payload to Atoms, and returns the result in a vector.
          * \return A vector with the Atoms to which the payload was split.
          */
-        virtual vector<Atom<AtomType>> splitPayloadToAtoms() = 0;
+        virtual vector<Atom<AtomType>> splitPayloadToAtoms(Payload<PayloadType> *payloadToSplit) = 0;
 
 
 

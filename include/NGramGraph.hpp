@@ -11,8 +11,8 @@
 
 // defines
 #define NGRAMSIZE_DEFAULT_VALUE 3
-#define EDGE_WEIGHT_DEFAULT_VALUE 1.0
 #define CORRELATIONWINDOW_DEFAULT_VALUE 3
+
 
 
 /**
@@ -21,7 +21,7 @@
  * A N-gram graph is a ProximityGraph for strings that are split into N-grams.
  * The graph's Atoms are N-grams, and they are connected iff they are close enough (according to the CorrelationWindow) inside the string.
  */
-class NGramGraph : public ProximityGraph<std::string>
+class NGramGraph : public ProximityGraph<std::string, std::string>
 {
     public:
         /** Default constructor.
@@ -36,25 +36,12 @@ class NGramGraph : public ProximityGraph<std::string>
          *  \param CorrelationWindowValue The new value for the CorrelationWindow variable.
          *  \param NGramSizeValue The new value for the NGramSize variable.
          */
-        NGramGraph(unsigned int CorrelationWindowValue, Splitter<std::string> *newSplitter, ProximityEvaluator<std::string> *newProximityEvaluator);
+        NGramGraph(ProximityEvaluator<std::string> *newProximityEvaluator, StringSplitter *newSplitter, StringPayload *newPayload, unsigned int CorrelationWindowValue);
 
 
 
         /** Default destructor */
         virtual ~NGramGraph();
-
-
-
-        /** Accessor for payload variable.
-         */
-        std::string getPayload() { return splitter->getPayload(); }
-
-
-
-        /** Mutator for payload variable.
-         * \param newPayload The new value for the payload variable.
-         */
-        void setPayload(std::string newPayload) { splitter->setPayload(newPayload); }
 
 
 

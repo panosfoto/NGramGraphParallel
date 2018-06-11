@@ -5,10 +5,15 @@
 #ifndef PROXIMITYGRAPH_HPP
 #define PROXIMITYGRAPH_HPP
 
+
 // project headers
 #include "UniqueVertexGraph.hpp"
 #include "ProximityEvaluator.hpp"
+#include "Payload.hpp"
 #include "Splitter.hpp"
+
+// defines
+#define EDGE_WEIGHT_DEFAULT_VALUE 1.0
 
 
 
@@ -17,12 +22,21 @@
  * A ProximityGraph needs a ProximityEvaluator, a Splitter and a payload, “whole” item that can be broken down into Atoms, which will be the vertices of the graph.
  * It uses the Splitter to split the payload into Atoms, and then uses the ProximityEvaluator to identify which Atoms should be connected.
  */
-template <typename AtomType>
+template <typename PayloadType, typename AtomType>
 class ProximityGraph : public UniqueVertexGraph<AtomType>
 {
     public:
         /** Default constructor. */
         ProximityGraph();
+
+
+
+        /** Constructor that initializes the evaluator, the splitter and the payload.
+         * \param newEvaluator The new ProximityEvaluator for the ProximityGraph.
+         * \param newSplitter The new splitter for the ProximityGraph.
+         * \param newPayload The new payload (data) that the graph will hold.
+         */
+        ProximityGraph(ProximityEvaluator<AtomType> *newEvaluator, Splitter<PayloadType, AtomType> *newSplitter, Payload<PayloadType> *newPayload);
 
 
 
@@ -41,14 +55,21 @@ class ProximityGraph : public UniqueVertexGraph<AtomType>
         /** Mutator for splitter variable.
          * \param newSplitter The new splitter for the ProximityGraph.
          */
-        void setSplitter(Splitter<AtomType> *newSplitter) { splitter = newSplitter; }
+        void setSplitter(Splitter<PayloadType, AtomType> *newSplitter) { splitter = newSplitter; }
+
+
+
+        /** Mutator for payload variable.
+         * \param newPayload The new payload (data) that the graph will hold.
+         */
+        void setPayload(Payload<PayloadType> *newPayload) { payload = newPayload; }
 
 
 
         /**
          * Creates the graph used internally by the ProximityGraph, according to the CorrelationWindow.
          */
-        virtual void createGraph() = 0;
+        virtual void createGraph();
 
 
 
@@ -66,7 +87,15 @@ class ProximityGraph : public UniqueVertexGraph<AtomType>
          * \var splitter The splitter that will be used to break the payload into Atoms.
          *
          */
-        Splitter<AtomType> *splitter;
+        Splitter<PayloadType, AtomType> *splitter;
+
+
+
+        /**
+         * \var payload The data that the graph holds, which will be split into Atoms.
+         *
+         */
+        Payload<PayloadType> *payload;
 };
 
 

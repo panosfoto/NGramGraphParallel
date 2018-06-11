@@ -16,11 +16,12 @@ NGramGraph::NGramGraph()
 
 
 
-NGramGraph::NGramGraph(unsigned int CorrelationWindowValue, Splitter<std::string> *newSplitter, ProximityEvaluator<std::string> *newProximityEvaluator)
+NGramGraph::NGramGraph(ProximityEvaluator<std::string> *newProximityEvaluator, StringSplitter *newSplitter, StringPayload *newPayload, unsigned int CorrelationWindowValue)
 {
-    CorrelationWindow = CorrelationWindowValue;
-    splitter = newSplitter;
     evaluator = newProximityEvaluator;
+    splitter = newSplitter;
+    payload = newPayload;
+    CorrelationWindow = CorrelationWindowValue;
 }
 
 
@@ -38,8 +39,13 @@ void NGramGraph::createGraph()
     typename Graph(std::string)::vertex_descriptor currentVertex;
     vector<typename Graph(std::string)::vertex_descriptor> preceding_atoms;
 
+    if (splitter == nullptr)
+    {
+        // TODO : throw exception for missing splitter
+        std::cerr << "NGramGraph::createGraph() : Error: missing splitter. Exiting..." << std::endl; return;
+    }
     // split payload to get the n-grams (atoms)
-    atoms = splitter->splitPayloadToAtoms();
+    atoms = splitter->splitPayloadToAtoms(payload);
 
     // add the atoms to the graph
     for(typename vector<Atom<std::string>>::iterator itCurrentAtom = atoms.begin() ; itCurrentAtom != atoms.end() ; ++itCurrentAtom)

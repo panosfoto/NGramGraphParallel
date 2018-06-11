@@ -50,9 +50,11 @@ int main(){
 
     StringSplitter sspl(4);
     sspl.setAtomSize(NGRAMSIZE_DEFAULT_VALUE);
-    NGramGraph ngg(1, &sspl, nullptr);
-    ngg.setPayload("Hello");
-    cout << "Correlation window: " << ngg.getCorrelationWindow() << ", nGram size: " << sspl.getAtomSize() << ", payload size: " << sspl.getPayload().length() << endl;
+    StringPayload sp("Hello");
+    NGramGraph ngg(nullptr, &sspl, &sp, 1);
+//    ngg.setPayload("Hello");
+//    ngg.setPayload(&sp);
+    cout << "Correlation window: " << ngg.getCorrelationWindow() << ", nGram size: " << sspl.getAtomSize() << ", payload size: " << sp.getPayload().length() << endl;
     ngg.createGraph();
 
 //    NGramGraph<string> g;
