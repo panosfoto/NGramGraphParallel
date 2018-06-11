@@ -23,7 +23,7 @@ class ProximityEvaluator
          *  \param atomA The first atom.
          *  \param atomB The second atom.
          */
-        bool areClose(Atom<AtomType> atomA, Atom<AtomType> atomB) = 0;
+        virtual bool areClose(Atom<AtomType> atomA, Atom<AtomType> atomB) = 0;
 };
 
 
