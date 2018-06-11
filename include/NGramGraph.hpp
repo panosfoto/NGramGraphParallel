@@ -81,15 +81,6 @@ class NGramGraph : public ProximityGraph<std::string, std::string>
          * \param neighbors A vector containing the vertices who will be the tails of the edges.
          */
         void createEdgesToNeighbors(Graph(std::string)::vertex_descriptor vHead, vector<typename Graph(std::string)::vertex_descriptor> neighbors);
-
-
-
-// DEPRECATED: Using the splitter->atomSize variable instead
-//        /**
-//         * \var NGramSize The size of the n-grams. Default is 3.
-//         *
-//         */
-//        unsigned int NGramSize;
 };
 
 #endif // NGRAMGRAPH_H

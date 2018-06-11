@@ -50,15 +50,6 @@ class UniqueVertexGraph
 
 
 
-//        // DEPRECATED: THE OTHER addVertex() FUNCTION SHOULD BE USED.
-//        /** Adds a new vertex to the graph. If a vertex holding the same Atom already exists, it doesn't add a new one, but instead throws an Exception.
-//         * \param aAtom The Atom that will be added to the graph.
-//         * \throws TryingToAddExistingVertexException
-//         */
-//        void addVertex(Atom<AtomType> aAtom);
-
-
-
         /** Adds a new vertex to the graph, and returns its vertex descriptor.
          * If a vertex holding the same Atom already exists, it doesn't add a new one, but instead returns the vertex descriptor of the vertex that holds the Atom.
          * \param aAtom The Atom that will be added to the graph.
@@ -69,7 +60,7 @@ class UniqueVertexGraph
 
 
         /** Removes a vertex from the graph, based on the Atom it's holding.
-//         * Also removes all the edges it's connected to.
+         * Also removes all the edges it's connected to.
          * \param aAtom The Atom of the vertex that will be removed from the graph.
          */
         void removeVertex(Atom<AtomType> aAtom);

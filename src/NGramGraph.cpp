@@ -44,6 +44,11 @@ void NGramGraph::createGraph()
         // TODO : throw exception for missing splitter
         std::cerr << "NGramGraph::createGraph() : Error: missing splitter. Exiting..." << std::endl; return;
     }
+    if (payload == nullptr)
+    {
+        // TODO : throw exception for missing payload
+        std::cerr << "NGramGraph::createGraph() : Error: missing payload. Exiting..." << std::endl; return;
+    }
     // split payload to get the n-grams (atoms)
     atoms = splitter->splitPayloadToAtoms(payload);
 
@@ -64,11 +69,11 @@ void NGramGraph::createGraph()
             preceding_atoms.erase(preceding_atoms.begin());
     }
     // DEBUG
-    std::cout << "Num of vertices: " << boost::num_vertices(graph) << std::endl << "Num of edges: " << boost::num_edges(graph) << std::endl;
-    std::cout << "---------\nBoost print:" << std:: endl;
-    boost::print_graph(graph);
-    std::cout << "---------\nGraphviz print:" << std:: endl;
-    printGraphviz();
+//    std::cout << "Num of vertices: " << boost::num_vertices(graph) << std::endl << "Num of edges: " << boost::num_edges(graph) << std::endl;
+//    std::cout << "---------\nBoost print:" << std:: endl;
+//    boost::print_graph(graph);
+//    std::cout << "---------\nGraphviz print:" << std:: endl;
+//    printGraphviz();
 }
 
 

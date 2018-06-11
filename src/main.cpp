@@ -56,6 +56,7 @@ int main(){
 //    ngg.setPayload(&sp);
     cout << "Correlation window: " << ngg.getCorrelationWindow() << ", nGram size: " << sspl.getAtomSize() << ", payload size: " << sp.getPayload().length() << endl;
     ngg.createGraph();
+    ngg.printGraphviz();
 
 //    NGramGraph<string> g;
 //    g.divider.setPayload(TEXT_PAYLOAD);
