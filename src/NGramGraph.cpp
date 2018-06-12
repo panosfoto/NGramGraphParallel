@@ -12,6 +12,7 @@ NGramGraph::NGramGraph()
     CorrelationWindow = CORRELATIONWINDOW_DEFAULT_VALUE;
     splitter = nullptr;
     evaluator = nullptr;
+    payload = nullptr;
 }
 
 
