@@ -11,7 +11,11 @@
 
 
 /**
- * \Class A class that represents the similarity of graphs
+ * \Class A class that represents the similarity of graphs. Consists of 3 basic similarities: \n
+ * valueSimilarity, regarding the existence and weight of edges of the graphs, \n
+ * containmentSimilarity, regarding the existence of edges of the graphs, \n
+ * sizeSimilarity, regarding the number of edges of the graphs. \n
+ * The overall similarity is defined as the product of the 3 basic similarities.
  */
 class GraphSimilarity : public Similarity
 {
@@ -39,7 +43,7 @@ class GraphSimilarity : public Similarity
          * \return map<string, double>
          *      A map with the values of the similarities
          */
-        map<string, double> getSimilarityComponents();
+        std::map<std::string, double> getSimilarityComponents();
 
 
 

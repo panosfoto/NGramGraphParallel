@@ -24,10 +24,10 @@ GraphSimilarity::GraphSimilarity(double valueSimilarity, double containmentSimil
 
 
 
-map<string, double> GraphSimilarity::getSimilarityComponents()
+std::map<std::string, double> GraphSimilarity::getSimilarityComponents()
 {
     // Init result map
-    map<string, double> resultMap;
+    std::map<std::string, double> resultMap;
     // Update components
     resultMap["valueSimilarity"] = this->valueSimilarity;
     resultMap["containmentSimilarity"] = this->containmentSimilarity;
