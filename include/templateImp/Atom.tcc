@@ -8,7 +8,7 @@
 template <typename AtomType>
 Atom<AtomType>::Atom(AtomType initialValue)
 {
-    payload = initialValue;
+    data = initialValue;
 }
 
 
@@ -25,7 +25,7 @@ template <typename AtomType>
 std::string Atom<AtomType>::toString()
 {
     std::ostringstream ss;
-    ss << payload;
+    ss << data;
     return ss.str();
 }
 
@@ -34,7 +34,7 @@ std::string Atom<AtomType>::toString()
 template <typename AtomType>
 bool Atom<AtomType>::operator==(const Atom& other) const
 {
-    return this->payload == other.payload;
+    return this->data == other.data;
 }
 
 
@@ -42,7 +42,7 @@ bool Atom<AtomType>::operator==(const Atom& other) const
 template <typename AtomType>
 void Atom<AtomType>::operator=(const Atom& aSource)
 {
-    this->payload = aSource.payload;
+    this->data = aSource.data;
 }
 
 
@@ -54,7 +54,7 @@ namespace std {
     {
         std::size_t operator()(const Atom<AtomType>& a) const
         {
-            return hash<AtomType>()(a.getPayload());
+            return hash<AtomType>()(a.getData());
         }
     };
 

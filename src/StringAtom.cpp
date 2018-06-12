@@ -12,5 +12,5 @@ StringAtom::~StringAtom()
 
 bool StringAtom::operator==(const StringAtom& other) const
 {
-    return this->payload.compare(other.payload) == 0;
+    return this->data.compare(other.data) == 0;
 }

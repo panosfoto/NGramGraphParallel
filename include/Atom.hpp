@@ -10,10 +10,10 @@
 
 
 /**
- * \Class A class that represents an atom, the smallest entity of a DivisibleObject.
+ * \Class A class that represents an atom, the smallest entity of a Payload.
  *
- * Templates are used, so that it may contain whichever type of data is chosen each time.
- * \note When adding new classes, make sure to add/update corresponding template specialization
+ * Templates are used, so that it may contain whichever type of data is needed each time.
+ * \note To specialize this class for a specific Atom type, subclass this with the desired type and overwrite the necessary functions.
  */
 template <typename AtomType>
 class Atom
@@ -24,7 +24,7 @@ class Atom
         // TODO : check if there is a way to bypass this (e.g. providing an empty string ("") as default parameter).
         /**
          * Constructor for Atom class.
-         * \note Payload is not initialized with this constructor, setPayload() should be used to avoid undefined behavior by uninitialized payloads.
+         * \note data is not initialized with this constructor, setData() should be used to avoid undefined behavior by uninitialized data.
          */
         Atom() {}
 
@@ -43,21 +43,21 @@ class Atom
 
         /**
          * Returns the Atom's data.
-         * \return payload payload is the data that the Atom holds.
+         * \return The data that the Atom holds.
          */
-        AtomType getPayload() const { return payload; };
+        AtomType getData() const { return data; };
 
 
         /**
          * Updates the Atom's data.
-         * \param newPayload The new data that the Atom will be holding.
+         * \param newData The new data that the Atom will hold.
          */
-        void setPayload(AtomType newPayload) { payload = newPayload; };
+        void setData(AtomType newData) { data = newData; };
 
 
         /**
-         * Provide a readable representation (string) of the data that the Atom holds
-         * \return Returns a string made by the payload.
+         * Provide a readable representation (string) of the data that the Atom holds.
+         * \return Returns a string made by the data.
          */
         std::string toString();
 
@@ -66,7 +66,7 @@ class Atom
          * Compares the Atom with another Atom instance.
          * \param other A reference to an Atom instance to be compared with.
          * \return A boolean value: True if the two Atoms are identical, otherwise False.
-         * \note Should be type-based overwritten (template specialization) to compare correctly depending on type used.
+         * \note Should be type-based overwritten to compare correctly depending on type used.
          */
         bool operator==(const Atom& other) const;
 
@@ -80,10 +80,10 @@ class Atom
 
 
     protected:
-        /** \var payload
-         * Payload is the data that the Atom holds
+        /** \var data
+         * The data that the Atom holds.
          */
-        AtomType payload;
+        AtomType data;
 };
 
 
