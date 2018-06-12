@@ -12,22 +12,22 @@ $(OUT): $(OBJECTS)
 	$(CC) -o $@ $(OBJECTS)
 
 $(SOURCES_FOLDER)/main.o: main.cpp
-	$(CC) $(FLAGS) main.cpp
+	$(CC) $(FLAGS) main.cpp -o $@
 
 $(SOURCES_FOLDER)/GraphSimilarity.o: $(SOURCES_FOLDER)/GraphSimilarity.cpp
-	$(CC) $(FLAGS) $(SOURCES_FOLDER)/GraphSimilarity.cpp
+	$(CC) $(FLAGS) $(SOURCES_FOLDER)/GraphSimilarity.cpp -o $@
 
 $(SOURCES_FOLDER)/NGramGraph.o: $(SOURCES_FOLDER)/NGramGraph.cpp
-	$(CC) $(FLAGS) $(SOURCES_FOLDER)/NGramGraph.cpp
+	$(CC) $(FLAGS) $(SOURCES_FOLDER)/NGramGraph.cpp -o $@
 
 $(SOURCES_FOLDER)/StringAtom.o: $(SOURCES_FOLDER)/StringAtom.cpp
-	$(CC) $(FLAGS) $(SOURCES_FOLDER)/StringAtom.cpp
+	$(CC) $(FLAGS) $(SOURCES_FOLDER)/StringAtom.cpp -o $@
 
 $(SOURCES_FOLDER)/StringPayload.o: $(SOURCES_FOLDER)/StringPayload.cpp
-	$(CC) $(FLAGS) $(SOURCES_FOLDER)/StringPayload.cpp
+	$(CC) $(FLAGS) $(SOURCES_FOLDER)/StringPayload.cpp -o $@
 
 $(SOURCES_FOLDER)/StringSplitter.o: $(SOURCES_FOLDER)/StringSplitter.cpp
-	$(CC) $(FLAGS) $(SOURCES_FOLDER)/StringSplitter.cpp
+	$(CC) $(FLAGS) $(SOURCES_FOLDER)/StringSplitter.cpp -o $@
 
 clean:
 	rm -f $(OBJECTS) $(OUT)
