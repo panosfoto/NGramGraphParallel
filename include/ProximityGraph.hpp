@@ -100,7 +100,7 @@ class ProximityGraph : public UniqueVertexGraph<AtomType>
 
 
 // template implementation file
-#include "ProximityGraph.tcc"
+#include "templateImp/ProximityGraph.tcc"
 
 
 #endif // PROXIMITYGRAPH_HPP

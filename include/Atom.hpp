@@ -88,7 +88,7 @@ class Atom
 
 
 // template implementation file
-#include "Atom.tcc"
+#include "templateImp/Atom.tcc"
 
 
 #endif // ATOM_H

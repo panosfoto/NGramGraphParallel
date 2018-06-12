@@ -155,7 +155,7 @@ class UniqueVertexGraph
 
 
 // template implementation file
-#include "UniqueVertexGraph.tcc"
+#include "templateImp/UniqueVertexGraph.tcc"
 
 
 #endif // UNIQUEVERTEXGRAPH_H
