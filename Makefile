@@ -1,8 +1,8 @@
 SOURCES_FOLDER		= src
 HEADERS_FOLDER		= include
 TEMPLATES_FOLDER	= include/templateImp
-OBJECTS				= $(SOURCES_FOLDER)/main.o $(SOURCES_FOLDER)/GraphSimilarity.o $(SOURCES_FOLDER)/NGramGraph.o $(SOURCES_FOLDER)/StringAtom.o $(SOURCES_FOLDER)/StringPayload.o $(SOURCES_FOLDER)/StringSplitter.o
-OUT					= main
+OBJECTS				= $(SOURCES_FOLDER)/test.o $(SOURCES_FOLDER)/GraphSimilarity.o $(SOURCES_FOLDER)/NGramGraph.o $(SOURCES_FOLDER)/StringAtom.o $(SOURCES_FOLDER)/StringPayload.o $(SOURCES_FOLDER)/StringSplitter.o
+OUT					= test
 CC					= g++
 FLAGS				= -c -std=c++11 -Wall -I$(HEADERS_FOLDER) 
 
@@ -11,8 +11,8 @@ all: $(OUT)
 $(OUT): $(OBJECTS)
 	$(CC) -o $@ $(OBJECTS)
 
-$(SOURCES_FOLDER)/main.o: main.cpp
-	$(CC) $(FLAGS) main.cpp -o $@
+$(SOURCES_FOLDER)/test.o: test.cpp
+	$(CC) $(FLAGS) test.cpp -o $@
 
 $(SOURCES_FOLDER)/GraphSimilarity.o: $(SOURCES_FOLDER)/GraphSimilarity.cpp
 	$(CC) $(FLAGS) $(SOURCES_FOLDER)/GraphSimilarity.cpp -o $@
