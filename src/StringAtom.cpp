@@ -1,3 +1,7 @@
+/**
+ * \file StringAtom.cpp
+ */
+
 #include "StringAtom.hpp"
 
 StringAtom::StringAtom(std::string s) : Atom<std::string> (s)
