@@ -16,10 +16,11 @@
 
 // defines
 #define EDGE_WEIGHT_TYPE double
+// graph macro
 #define Graph(AtomType) boost::directed_graph<Atom<AtomType>,EdgeWeightProperty>
 
 
-// typedefs
+// property typedef for readabilitiness
 typedef boost::property<boost::edge_weight_t, EDGE_WEIGHT_TYPE> EdgeWeightProperty;
 
 
@@ -33,7 +34,7 @@ class UniqueVertexGraph
 
     public:
 
-        // graph and property map typedefs for readabilitiness
+        // property map typedef for readabilitiness
         typedef typename boost::property_map<Graph(AtomType), boost::edge_weight_t>::type EdgeWeightMap;
 
 

@@ -22,18 +22,6 @@ UniqueVertexGraph<AtomType>::~UniqueVertexGraph()
 
 
 
-    // DEPRECATED
-//template <typename AtomType>
-//void UniqueVertexGraph<AtomType>::addVertex(Atom<AtomType> aAtom)
-//{
-//    if (UniqueVertices.find(aAtom) == UniqueVertices.end())
-//        UniqueVertices[aAtom] = graph.add_vertex();
-////    else  // vertex already exists, so throw exception
-////        // throw Exception
-//}
-
-
-
 template <typename AtomType>
 typename Graph(AtomType)::vertex_descriptor UniqueVertexGraph<AtomType>::addVertex(Atom<AtomType> aAtom)
 {
@@ -130,7 +118,6 @@ void UniqueVertexGraph<AtomType>::addEdge(Atom<AtomType> aHead, Atom<AtomType> a
     }
     else    // edge.second == true, edge exists, so update its weight
     {
-        //EdgeWeightMap edgeWeightMap = get(boost::edge_weight, graph);
         edgeWeightMap[edge.first] += edgeWeight;
 //        std::cout << "Exists: " << boost::edge(vHead, vTail, graph).second << " with weight " << boost::get( boost::edge_weight, graph, boost::edge(vHead, vTail, graph).first ) << std::endl;  // DEBUG
     }
