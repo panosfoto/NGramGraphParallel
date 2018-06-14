@@ -113,10 +113,11 @@ class UniqueVertexGraph
 
 
         /** A wrapper for printGraphviz(). Prints the graph in DOT format to the file with the name provided.
-         * \note If the file already exists, <b> its contents are appended to the end of the file</b>.
+         * \warning If the file already exists, <b> default mode erases its contents </b>.
          * \param fileName The name of the file that the graph will be printed to.
+         * \param openMode The mode for the file that will be opened. Defaults to "std::ofstream::out | std::ofstream::trunc" (if file exists, keep its content and append to the end).
          */
-        void printGraphvizToFile(std::string fileName);
+        void printGraphvizToFile(std::string fileName, std::ofstream::openmode openMode = std::ofstream::out | std::ofstream::trunc);
 
 
 

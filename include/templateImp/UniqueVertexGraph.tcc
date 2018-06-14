@@ -159,9 +159,9 @@ void UniqueVertexGraph<AtomType>::printGraphviz(std::ostream& outputStream) // o
 
 
 template <typename AtomType>
-void UniqueVertexGraph<AtomType>::printGraphvizToFile(std::string fileName)
+void UniqueVertexGraph<AtomType>::printGraphvizToFile(std::string fileName, std::ofstream::openmode openMode)
 {
-    std::ofstream ofs (fileName,  std::ofstream::out | std::ofstream::app);
+    std::ofstream ofs (fileName, openMode);
     if (ofs.good())
         printGraphviz(ofs);
     else
