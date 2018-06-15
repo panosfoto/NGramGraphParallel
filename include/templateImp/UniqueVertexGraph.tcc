@@ -125,6 +125,24 @@ void UniqueVertexGraph<AtomType>::addEdge(Atom<AtomType> aHead, Atom<AtomType> a
 
 
 
+
+template <typename AtomType>
+int UniqueVertexGraph<AtomType>::numberOfVertices()
+{
+    return boost::num_vertices(graph);
+}
+
+
+
+
+template <typename AtomType>
+int UniqueVertexGraph<AtomType>::numberOfEdges()
+{
+    return boost::num_edges(graph);
+}
+
+
+
 template <typename AtomType>
 void UniqueVertexGraph<AtomType>::printGraphviz(std::ostream& outputStream) // outputStream default value is std::cout
 {

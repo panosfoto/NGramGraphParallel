@@ -106,6 +106,20 @@ class UniqueVertexGraph
 
 
 
+        /**
+         * \return The number of graph's vertices.
+         */
+        int numberOfVertices();
+
+
+
+        /**
+         * \return The number of graph's edges.
+         */
+        int numberOfEdges();
+
+
+
         /** Prints the graph in DOT format to the output stream provided. Defaults to \b std::cout.
          * \param outputStream The output stream that the graph will be printed to.
          */
