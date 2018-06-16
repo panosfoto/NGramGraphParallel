@@ -40,8 +40,10 @@ int main(){
     cout << "Correlation window: " << ngg.getCorrelationWindow() << ", nGram size: " << sspl.getAtomSize() << ", payload size: " << sp.getPayload().length() << endl;
     ngg.createGraph();
     ngg.printGraphvizToFile("out.dot");
+    StringAtom test("ook");
+    ngg.removeVertex(test);
 
-    GraphSimilarity gs(0.1, 0.4, 0.2);
+    GraphSimilarity gs(0.1, 0.4, 0.2, 0.1/0.2);
     cout << endl << "Overall Similarity: " << gs.getOverallSimilarity() << endl;
     map<string, double> gsValues =  gs.getSimilarityComponents();
     for (map<string, double>::iterator it = gsValues.begin() ; it != gsValues.end() ; ++it)
