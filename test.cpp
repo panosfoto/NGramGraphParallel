@@ -5,6 +5,7 @@
 #include <iostream>
 #include "Atom.hpp"
 #include "GraphSimilarity.hpp"
+#include "GraphComparator.hpp"
 #include "NGramGraph.hpp"
 #include "UniqueVertexGraph.hpp"
 #include "StringAtom.hpp"
@@ -42,8 +43,11 @@ int main(){
     ngg.printGraphvizToFile("out.dot");
     StringAtom test("ook");
     ngg.removeVertex(test);
+//    ngg.printGraphviz();//ToFile("out.dot");
 
     GraphSimilarity gs(0.1, 0.4, 0.2, 0.1/0.2);
+    GraphComparator<std::string, std::string> gc;
+    gs = gc.compare(ngg, ngg);
     cout << endl << "Overall Similarity: " << gs.getOverallSimilarity() << endl;
     map<string, double> gsValues =  gs.getSimilarityComponents();
     for (map<string, double>::iterator it = gsValues.begin() ; it != gsValues.end() ; ++it)
