@@ -5,7 +5,7 @@
 #ifndef GRAPHSIMILARITY_H
 #define GRAPHSIMILARITY_H
 
-// system headers
+// project headers
 #include "Similarity.hpp"
 
 
@@ -32,10 +32,9 @@ class GraphSimilarity : public Similarity
          * \param valueSimilarity (double) The valueSimilarity component value.
          * \param containmentSimilarity (double) The containmentSimilarity component value.
          * \param sizeSimilarity (double) The sizeSimilarity component value.
-         * \param normalizedValueSimilarity (double) The normalizedValueSimilarity component value.
          *
          */
-        GraphSimilarity(double valueSimilarity, double containmentSimilarity, double sizeSimilarity, double normalizedValueSimilarity);
+        GraphSimilarity(double valueSimilarity, double containmentSimilarity, double sizeSimilarity);
 
 
 
@@ -44,7 +43,7 @@ class GraphSimilarity : public Similarity
          * \return map<string, double>
          *      A map with the values of the similarities
          */
-        std::map<std::string, double> getSimilarityComponents();
+        virtual std::map<std::string, double> getSimilarityComponents();
 
 
 
@@ -55,7 +54,7 @@ class GraphSimilarity : public Similarity
          * \return double
          *      Returns the overall similarity
          */
-        double getOverallSimilarity();
+        virtual double getOverallSimilarity();
 
 
 
@@ -78,13 +77,6 @@ class GraphSimilarity : public Similarity
          * Similarity regarding the number of edges of the graphs
          */
         double sizeSimilarity;
-
-
-
-        /** \var normalizedValueSimilarity
-         * Similarity regarding the number of edges and the size of the graphs
-         */
-        double normalizedValueSimilarity;
 };
 
 #endif // GRAPHSIMILARITY_H

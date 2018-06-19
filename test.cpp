@@ -45,7 +45,7 @@ int main(){
     ngg.removeVertex(test);
 //    ngg.printGraphviz();//ToFile("out.dot");
 
-    GraphSimilarity gs(0.1, 0.4, 0.2, 0.1/0.2);
+    GraphSimilarity gs(0.1, 0.4, 0.2);
     GraphComparator<std::string, std::string> gc;
     gs = gc.compare(ngg, ngg);
     cout << endl << "Overall Similarity: " << gs.getOverallSimilarity() << endl;
