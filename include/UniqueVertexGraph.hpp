@@ -106,17 +106,24 @@ class UniqueVertexGraph
 
 
 
-        /**
+        /** Returns how many vertices the graph has.
          * \return The number of graph's vertices.
          */
         int numberOfVertices();
 
 
 
-        /**
+        /** Returns how many edges the graph has.
          * \return The number of graph's edges.
          */
         int numberOfEdges();
+
+
+
+        /** Returns the boost graph that the UniqueVertexGraph manages.
+         * \return The boost graph used internally.
+         */
+        Graph(AtomType) getGraph() { return graph; }
 
 
 
