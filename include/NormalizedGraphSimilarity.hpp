@@ -1,5 +1,19 @@
 /**
  * \file NormalizedGraphSimilarity.hpp
+ *
+ * \author Panagiotis Fotopoulos
+ *
+ * \copyright Copyright 2018 NCSR Demokritos Greece \n
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License. \n
  */
 
 #ifndef NORMALIZEDGRAPHSIMILARITY_H
@@ -12,7 +26,7 @@
 /**
  * \Class A class that represents a normalized similarity of graphs. \n
  * Consists of the same 3 basic similarities in GraphSimilarity, but returns the normalized value similarity as the overall similarity: \n
- * The overall similarity is defined as valueSimilarity / SizeSimilarity (or 0, is SizeSimilarity is 0).
+ * The overall similarity is defined as valueSimilarity / SizeSimilarity (or 0, if SizeSimilarity is 0).
  */
 class NormalizedGraphSimilarity : public GraphSimilarity
 {
