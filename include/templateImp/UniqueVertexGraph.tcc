@@ -193,14 +193,17 @@ void UniqueVertexGraph<AtomType>::printGraphviz(std::ostream& outputStream) // o
 {
     boost::dynamic_properties dp;
 
-    // Using the intrinsic vertex index for the graphviz node ids
-    dp.property("node_id", get(boost::vertex_index, graph));
-
     // Grab the property-map for the whole bundle
     auto vbundle = get(boost::vertex_bundle, graph);
 
+    // Using the atom's string representation for the graphviz node ids
+    dp.property("node_id", boost::make_transform_value_property_map(std::mem_fn(&Atom<AtomType>::toString), vbundle));
+
     // Transform it
-    dp.property("label", boost::make_transform_value_property_map(std::mem_fn(&Atom<std::string>::toString), vbundle));
+    dp.property("label", boost::make_transform_value_property_map(std::mem_fn(&Atom<AtomType>::toString), vbundle));
+
+    // Add edge weight
+    dp.property("label", get(boost::edge_weight, graph));
 
     // Print graph
     boost::write_graphviz_dp(outputStream, graph, dp);
