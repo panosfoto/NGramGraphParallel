@@ -20,7 +20,7 @@
 #define UNIQUEVERTEXGRAPH_H
 
 // system headers
-#include <boost/graph/directed_graph.hpp>
+#include <boost/graph/adjacency_list.hpp>
 #include <boost/graph/graphviz.hpp>
 #include <unordered_map>
 
@@ -161,7 +161,7 @@ class UniqueVertexGraph
 
         /**
          * \var graph The graph of the UniqueVertexGraph.
-         * Implemented with Boost Graph Library as a directed graph with weighted edges.
+         * Implemented with Boost Graph Library as a bidirectional graph with weighted edges.
          */
         Graph(AtomType) graph;
 
