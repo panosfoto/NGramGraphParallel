@@ -41,7 +41,7 @@ typename Graph(AtomType)::vertex_descriptor UniqueVertexGraph<AtomType>::addVert
 {
     if (UniqueVertices.find(aAtom) == UniqueVertices.end())
     {
-        UniqueVertices[aAtom] = graph.add_vertex(aAtom);
+        UniqueVertices[aAtom] = boost::add_vertex(aAtom, graph);
     }
     return UniqueVertices[aAtom];
 }
@@ -73,40 +73,19 @@ void UniqueVertexGraph<AtomType>::removeVertex(typename Graph(AtomType)::vertex_
 template <typename AtomType>
 void UniqueVertexGraph<AtomType>::removeVertex(Atom<AtomType> aAtom, typename Graph(AtomType)::vertex_descriptor vVertex)
 {
-    // TODO : remove all vertex's edges
-    typedef typename boost::graph_traits < Graph(AtomType) >::in_edge_iterator in_edge_iterator;
-    typedef typename boost::graph_traits < Graph(AtomType) >::out_edge_iterator out_edge_iterator;
-    std::cout << "numOfEdges: " << boost::num_edges(graph) << std::endl;
-    std::cout << "numberOfOutEdges: " << boost::out_degree(vVertex, graph) << std::endl;
+//    std::cout << "numOfEdges: " << boost::num_edges(graph) << std::endl;      //DEBUG
+//    std::cout << "numberOfOutEdges: " << boost::out_degree(vVertex, graph) << std::endl;      //DEBUG
 
-//    typedef typename boost::graph_traits < Graph(AtomType) >::in_edge_iterator in_edge_iterator;
-//
-//    std::pair<in_edge_iterator, in_edge_iterator> inEdges = boost::in_edges(vVertex, graph);
-//
-//    std::cout << "In edges: " << std::endl;
-//    for(; inEdges.first != inEdges.second; ++inEdges.first)
-//    {
-//        //std::cout << index[*inEdges.first] << " ";
-//        std::cout << *inEdges.first << " " << source(*inEdges.first, graph) << " " << target(*inEdges.first, graph) << " ";
-//        graph.remove_edge(*inEdges.first);inEdges = boost::in_edges(vVertex, graph);
-//    }
-//
-//    std::cout << std::endl << "Out edges: " << std::endl;
-//    // Get a list of outgoing edges from vertex 1
-//    typedef typename boost::graph_traits < Graph(AtomType) >::out_edge_iterator out_edge_iterator;
-//    std::pair<out_edge_iterator, out_edge_iterator> outEdges = boost::out_edges(vVertex, graph);
-//
-//    for(; outEdges.first != outEdges.second; ++outEdges.first)
-//    {
-//        std::cout << *outEdges.first << " ";
-//        graph.remove_edge(*outEdges.first);outEdges = boost::out_edges(vVertex, graph);
-//    }
-//
-//    std::cout << std::endl;
+    // remove all edges connected to this vertex
+    boost::clear_vertex(vVertex, graph);
 
+    // remove the vertex entry in the atom hash
     UniqueVertices.erase(aAtom);
-    graph.remove_vertex(vVertex);
-    std::cout << "numOfEdges: " << boost::num_edges(graph) << std::endl;
+
+    // remove vertex from graph
+    boost::remove_vertex(vVertex, graph);
+
+//    std::cout << "numOfEdges: " << boost::num_edges(graph) << std::endl;        //DEBUG
 }
 
 
