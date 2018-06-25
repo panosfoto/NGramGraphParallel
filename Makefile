@@ -14,19 +14,19 @@ $(OUT): $(OBJECTS)
 $(SOURCES_FOLDER)/test.o: test.cpp
 	$(CC) $(FLAGS) test.cpp -o $@
 
-$(SOURCES_FOLDER)/GraphSimilarity.o: $(SOURCES_FOLDER)/GraphSimilarity.cpp
+$(SOURCES_FOLDER)/GraphSimilarity.o: $(SOURCES_FOLDER)/GraphSimilarity.cpp $(HEADERS_FOLDER)/GraphSimilarity.hpp
 	$(CC) $(FLAGS) $(SOURCES_FOLDER)/GraphSimilarity.cpp -o $@
 
-$(SOURCES_FOLDER)/NGramGraph.o: $(SOURCES_FOLDER)/NGramGraph.cpp
+$(SOURCES_FOLDER)/NGramGraph.o: $(SOURCES_FOLDER)/NGramGraph.cpp $(HEADERS_FOLDER)/NGramGraph.hpp
 	$(CC) $(FLAGS) $(SOURCES_FOLDER)/NGramGraph.cpp -o $@
 
-$(SOURCES_FOLDER)/StringAtom.o: $(SOURCES_FOLDER)/StringAtom.cpp
+$(SOURCES_FOLDER)/StringAtom.o: $(SOURCES_FOLDER)/StringAtom.cpp $(HEADERS_FOLDER)/StringAtom.hpp
 	$(CC) $(FLAGS) $(SOURCES_FOLDER)/StringAtom.cpp -o $@
 
-$(SOURCES_FOLDER)/StringPayload.o: $(SOURCES_FOLDER)/StringPayload.cpp
+$(SOURCES_FOLDER)/StringPayload.o: $(SOURCES_FOLDER)/StringPayload.cpp $(HEADERS_FOLDER)/StringPayload.hpp
 	$(CC) $(FLAGS) $(SOURCES_FOLDER)/StringPayload.cpp -o $@
 
-$(SOURCES_FOLDER)/StringSplitter.o: $(SOURCES_FOLDER)/StringSplitter.cpp
+$(SOURCES_FOLDER)/StringSplitter.o: $(SOURCES_FOLDER)/StringSplitter.cpp $(HEADERS_FOLDER)/StringSplitter.hpp
 	$(CC) $(FLAGS) $(SOURCES_FOLDER)/StringSplitter.cpp -o $@
 
 clean:
