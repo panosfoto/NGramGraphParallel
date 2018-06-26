@@ -168,6 +168,14 @@ int UniqueVertexGraph<AtomType>::numberOfEdges()
 
 
 template <typename AtomType>
+std::pair<typename boost::graph_traits<Graph(AtomType)>::edge_iterator, typename boost::graph_traits<Graph(AtomType)>::edge_iterator> UniqueVertexGraph<AtomType>::getEdges()
+{
+    return boost::edges(graph);
+}
+
+
+
+template <typename AtomType>
 void UniqueVertexGraph<AtomType>::printGraphviz(std::ostream& outputStream) // outputStream default value is std::cout
 {
     boost::dynamic_properties dp;

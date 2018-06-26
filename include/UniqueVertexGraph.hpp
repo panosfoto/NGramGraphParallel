@@ -134,10 +134,12 @@ class UniqueVertexGraph
 
 
 
-        /** Returns the boost graph that the UniqueVertexGraph manages.
-         * \return The boost graph used internally.
+        /** Returns the edges of the graph in boost's format, a pair of edge iterators:
+         * \t The first points to the first edge \n
+         * \t The second is a special edge iterator, indicating the end of the edge list
+         * \return The graph's edges.
          */
-        Graph(AtomType) getGraph() { return graph; }
+        std::pair<typename boost::graph_traits<Graph(AtomType)>::edge_iterator, typename boost::graph_traits<Graph(AtomType)>::edge_iterator> getEdges();
 
 
 
