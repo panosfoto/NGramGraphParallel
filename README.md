@@ -11,6 +11,11 @@ Also, in the future support for OpenCL will be added to speed up workload-heavy 
 You can download the boost libraries [here](https://www.boost.org/users/download/).
 * [OpenCL](https://www.khronos.org/opencl/) : The parallelization of the workload is going to use OpenCL. [Compatible hardware](https://en.wikipedia.org/wiki/OpenCL#Version_support) and their appropriate driver(s) are required. (not implemented yet, so not necessary)
 
+## Test execution
+Inside the project's top directory:\
+`make all`\
+`./test`
+
 ## Version
 v0.1 This version is the result of a 3-month internship. Only basic functionalities are implemented.
 This version includes:
