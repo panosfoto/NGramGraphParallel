@@ -17,7 +17,6 @@
  */
 
 #include <iostream>
-#include "Atom.hpp"
 #include "GraphSimilarity.hpp"
 #include "GraphComparator.hpp"
 #include "NGramGraph.hpp"
@@ -25,47 +24,55 @@
 #include "StringAtom.hpp"
 #include "StringSplitter.hpp"
 
-#define TEXT_PAYLOAD "How many cookies could a good cook cook, if a good cook could cook cookies? A good cook could cook as many cookies as a good cook could, if a good cook could cook cookies."
-//#define TEXT_PAYLOAD "Hope..."
+#define TEXT_PAYLOAD "This is a test sentence."
 
 using namespace std;
 
 int main(){
-    StringSplitter ss;
-    cout << ss.getAtomSize() << endl;
-    Atom<int> iAtom(42);
-    cout << iAtom.toString() << endl;
-    cout << iAtom.getData() << endl << endl;
 
-    StringAtom a1("a1"), a2("a2"), a3("a3");
-    UniqueVertexGraph<string> uvg;
-    uvg.addVertex(a1);
-    uvg.addVertex(a2);
-    uvg.addVertex(a3);
-    uvg.removeVertex(a3);
-    uvg.addEdge(a1, a2, 1.43);
-    uvg.addEdge(a1, a2, 2.43);
-    cout << uvg.contains(a1) << " " << uvg.contains(a2) << " " << uvg.contains(a3) << endl;
-    cout << endl;
+    // An example of graph creation:
 
-    StringSplitter sspl(4);
-    sspl.setAtomSize(NGRAMSIZE_DEFAULT_VALUE);
-    StringPayload sp(TEXT_PAYLOAD);
-    NGramGraph ngg(nullptr, &sspl, &sp, 1);
-    cout << "Correlation window: " << ngg.getCorrelationWindow() << ", nGram size: " << sspl.getAtomSize() << ", payload size: " << sp.getPayload().length() << endl;
-    ngg.createGraph();
-    ngg.printGraphvizToFile("out.dot");
-    StringAtom test("ook");
-    ngg.removeVertex(test);
-//    ngg.printGraphviz();//ToFile("out.dot");
+    // Declare a splitter for the Proximity Graph (string splitter here, since we will split a text to n-grams).
+    StringSplitter testStringSplitter(4);
 
-    GraphSimilarity gs(0.1, 0.4, 0.2);
-    GraphComparator<std::string, std::string> gc;
-    gs = gc.compare(ngg, ngg);
-    cout << endl << "Overall Similarity: " << gs.getOverallSimilarity() << endl;
-    map<string, double> gsValues =  gs.getSimilarityComponents();
-    for (map<string, double>::iterator it = gsValues.begin() ; it != gsValues.end() ; ++it)
-        cout << it->first << " => " << it->second << endl;
+    // Set the size of the atoms (n-grams in this  case). Default is 3.
+    testStringSplitter.setAtomSize(NGRAMSIZE_DEFAULT_VALUE);
+
+    // Declare the payload of the Proximity Graph (the entity that will be split to atoms). We are using a text in this example, so it will be a string payload.
+    StringPayload testStringPayload(TEXT_PAYLOAD);
+
+    // Declare the Proximity Graph. We will split a text into n-grams, so we are using an NGramGraph which is a ProximityGraph for this use.
+    // The NGramGraph has a built-in basic Proximity Evaluator so we won't explicitly pass one, but it needs a String Splitter and a String Payload to split.
+    NGramGraph testNGramGraph(nullptr, &testStringSplitter, &testStringPayload, 2);
+
+    // Create the graph from the text (StringPayload) and print it in DOT format.
+    testNGramGraph.createGraph();
+    testNGramGraph.printGraphviz();
+    testNGramGraph.printGraphvizToFile("out.dot");
+
+
+
+    // -------------------------------------------------------------------------------------------
+    cout << endl << endl << "-------------------------" << endl << endl << endl;
+
+
+
+    // An example of graph comparison:
+
+    // Declare an instance of GraphSimilarity to hold the comparison's result
+    GraphSimilarity testGraphSimilarity;
+
+    // Declare the graph comparator
+    GraphComparator<std::string, std::string> testGraphComparator;
+
+    // Compare the previous graph with itself and store the result to testGraphSimilarity
+    testGraphSimilarity = testGraphComparator.compare(testNGramGraph, testNGramGraph);
+
+    // Display the size similarity (from the various similarity components) of the two compared graphs.
+    map<string, double> testSimilarityComponents =  testGraphSimilarity.getSimilarityComponents();
+    cout << "Size Similarity: " << testSimilarityComponents["sizeSimilarity"] << endl;
+    // Since they are the same graph, their size is equal, therefore the similarity is 1.
 
     return 0;
+
 }
